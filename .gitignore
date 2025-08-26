@@ -1,0 +1,31 @@
+# Sensitive Documents
+*.pdf
+*pricing*
+*confidential*
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary Files
+*.tmp
+*.temp
+~*
+
+# Backup Files
+*.bak
+*.backup
+
+# IDE Files
+.vscode/
+.idea/
+
+# Version Control
+.git/
+
+# Dubai Police Project Specific
+*_CONFIDENTIAL*
+*pricing_internal*
