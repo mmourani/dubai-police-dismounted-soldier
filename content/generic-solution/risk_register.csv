@@ -1,0 +1,9 @@
+risk_id,description,category,impact,likelihood,mitigation
+RISK-001,Supply chain disruptions affecting component delivery,Supply Chain,High,Medium,Establish multiple supplier relationships and maintain buffer inventory
+RISK-002,Technical integration compatibility issues with existing systems,Technical,Medium,Low,Conduct thorough pre-integration testing and validation
+RISK-003,Site access restrictions causing installation delays,Schedule,Medium,Medium,Develop alternative scheduling and coordinate access requirements early
+RISK-004,Equipment defects discovered during factory testing,Quality,High,Low,Implement comprehensive quality assurance and testing protocols
+RISK-005,Scope creep from additional client requirements,Scope,Medium,Medium,Establish clear change control procedures and documentation
+RISK-006,Key personnel unavailability during critical project phases,Resource,Medium,Low,Cross-train team members and maintain backup resource plans
+RISK-007,Environmental conditions exceeding equipment specifications,Environmental,High,Low,Validate environmental requirements and implement protective measures
+RISK-008,Network security vulnerabilities during integration,Security,High,Low,Conduct security assessments and implement layered protection controls

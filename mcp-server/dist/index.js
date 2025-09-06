@@ -1,5 +1,5 @@
 import { readinessTools, handleReadinessTool } from './tools/readiness.js';
-import { handleReadinessCommand } from './tools/quick-router.js';
+import { handleCommand as handleRouterCommand } from './tools/quick-router.js';
 import { generateProposalTools, handleGenerateProposalTool } from './tools/generate-proposal.js';
 import { pingTools, handlePingTool } from './tools/ping.js';
 import { ingestTools, handleIngestTool } from './tools/ingest.js';
@@ -33,12 +33,11 @@ export async function handleToolInvocation(name, args) {
 }
 // Command router for natural language
 export function handleCommand(command) {
-    // Try readiness commands first
-    const result = handleReadinessCommand(command);
+    // Try all routed commands
+    const result = handleRouterCommand(command);
     if (result !== null) {
         return result;
     }
-    // Add other command handlers here
     // No match
     return null;
 }

@@ -1,0 +1,5 @@
+item,description,uom,quantity,rate_aed,amount_aed,notes
+1,System Supply,lot,1,50000,50000,Complete system package
+2,Installation Services,days,5,2000,10000,Professional installation
+3,Training Services,days,2,3000,6000,Operator training program
+4,Project Management,lump,1,5000,5000,PM and coordination

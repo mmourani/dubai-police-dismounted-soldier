@@ -1,5 +1,55 @@
 import { callTool } from '../tool-caller.js';
-// Readiness analyzer routes for natural language commands
+// Help command routes
+export const helpRoutes = [
+    {
+        test: /^(?:help|\?)$/i,
+        run: () => ({
+            content: [{
+                    type: 'text',
+                    text: `# MCP Proposal System Commands
+
+## Ingest Commands
+\`\`\`
+ingest plan                    # Show active ingest plan and data state
+ingest status                  # Show confidence, gaps, and file counts
+ingest refresh                 # Re-run readiness analyzer
+ingest apply [dry:true|false]  # Execute ingest steps (default: dry run)
+\`\`\`
+
+## Proposal Commands
+\`\`\`
+proposal outline new name:<PROJECT_ID> client:<CLIENT> project:"<PROJECT NAME>"
+proposal outline show [name:<PROJECT_ID>]
+proposal content draft name:<PROJECT_ID> section:<SECTION_ID>
+proposal content approve name:<PROJECT_ID> section:<SECTION_ID>
+proposal build name:<PROJECT_ID> format:(docx|pdf|html|md) [out:<path>] [template:<docx>]
+\`\`\`
+
+## Legacy Readiness Commands (Snapshot Mode)
+\`\`\`
+readiness analyze             # Analyze project documents
+readiness status              # Show current readiness status
+readiness answer <id>: <text> # Answer specific question
+readiness park <id>: <note>   # Park question for later
+generate proposal [force:true] [to <path>]  # Generate from snapshot
+\`\`\`
+
+## Health Commands
+\`\`\`
+ping                          # Health check
+health                        # Same as ping
+\`\`\`
+
+*Each command shows what files it reads/writes in the output.*`
+                }]
+        })
+    },
+    {
+        test: /^proposal\s+help$/i,
+        run: () => ({ content: [{ type: 'text', text: 'Use \`help\` for all available commands.' }] })
+    }
+];
+// Readiness analyzer routes for natural language commands (Legacy Snapshot Mode)
 export const readinessRoutes = [
     {
         test: /^readiness\s+analyze\b/i,
@@ -151,10 +201,10 @@ export const ingestRoutes = [
     }
 ];
 // Export combined routes for integration
-export const allReadinessRoutes = [...readinessRoutes, ...analyzerShortcuts, ...proposalRoutes, ...pingRoutes, ...ingestRoutes];
+export const allRoutes = [...helpRoutes, ...readinessRoutes, ...analyzerShortcuts, ...proposalRoutes, ...pingRoutes, ...ingestRoutes];
 // Helper function to match and execute routes
-export function handleReadinessCommand(command) {
-    for (const route of allReadinessRoutes) {
+export function handleCommand(command) {
+    for (const route of allRoutes) {
         const match = command.match(route.test);
         if (match) {
             return route.run(command, match);
@@ -162,13 +212,15 @@ export function handleReadinessCommand(command) {
     }
     return null;
 }
+// Legacy alias for backwards compatibility
+export const handleReadinessCommand = handleCommand;
 // Example integration with main router
 export function integrateWithMainRouter(mainRouter) {
-    // Add readiness routes to main router
-    mainRouter.addRoutes(allReadinessRoutes);
+    // Add all routes to main router
+    mainRouter.addRoutes(allRoutes);
     // Or use the handler function
     mainRouter.use((command) => {
-        const result = handleReadinessCommand(command);
+        const result = handleCommand(command);
         if (result !== null) {
             return result;
         }

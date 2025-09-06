@@ -1,0 +1,72 @@
+[
+  {
+    "id": "CORE-001",
+    "name": "Data Processing Engine",
+    "description": "Primary data processing and analysis platform",
+    "unit": "each",
+    "qty": 2,
+    "unit_cost_usd": 15000.00,
+    "subtotal_usd": 30000.00,
+    "notes": "Includes licensing and initial configuration"
+  },
+  {
+    "id": "CORE-002",
+    "name": "Security Gateway Appliance",
+    "description": "Network security and access control system",
+    "unit": "each",
+    "qty": 1,
+    "unit_cost_usd": 8000.00,
+    "subtotal_usd": 8000.00,
+    "notes": "Hardware-based security with integrated firewall"
+  },
+  {
+    "id": "CORE-003",
+    "name": "User Interface Workstations",
+    "description": "Professional workstation systems for user access",
+    "unit": "each",
+    "qty": 4,
+    "unit_cost_usd": 2500.00,
+    "subtotal_usd": 10000.00,
+    "notes": "Configured with specialized software suite"
+  },
+  {
+    "id": "INFRA-001",
+    "name": "Network Infrastructure Kit",
+    "description": "Switches, routers, and connectivity components",
+    "unit": "kit",
+    "qty": 1,
+    "unit_cost_usd": 5000.00,
+    "subtotal_usd": 5000.00,
+    "notes": "Complete network setup including cables and mounting"
+  },
+  {
+    "id": "INFRA-002",
+    "name": "Power and Environmental Systems",
+    "description": "UPS units, cooling, and power distribution",
+    "unit": "kit",
+    "qty": 1,
+    "unit_cost_usd": 4000.00,
+    "subtotal_usd": 4000.00,
+    "notes": "Ensures reliable power and environmental control"
+  },
+  {
+    "id": "SOFT-001",
+    "name": "Software Platform License",
+    "description": "Enterprise software licensing and support",
+    "unit": "license",
+    "qty": 1,
+    "unit_cost_usd": 12000.00,
+    "subtotal_usd": 12000.00,
+    "notes": "Annual license with technical support included"
+  },
+  {
+    "id": "SERV-001",
+    "name": "Professional Services Package",
+    "description": "Installation, configuration, and training services",
+    "unit": "package",
+    "qty": 1,
+    "unit_cost_usd": 6000.00,
+    "subtotal_usd": 6000.00,
+    "notes": "Includes 40 hours of professional services"
+  }
+]

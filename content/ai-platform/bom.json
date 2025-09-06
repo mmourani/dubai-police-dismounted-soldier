@@ -1,0 +1,24 @@
+[
+  {
+    "part_no": "SAMPLE-001",
+    "description": "Primary System Component",
+    "supplier": "Vendor A",
+    "qty_per_kit": 1,
+    "kits": 10,
+    "unit_price_aed": 5000.00,
+    "extended_price_aed": 50000.00,
+    "warranty_months": 24,
+    "lead_time_days": 45
+  },
+  {
+    "part_no": "SAMPLE-002", 
+    "description": "Secondary Control Unit",
+    "supplier": "Vendor B",
+    "qty_per_kit": 1,
+    "kits": 10,
+    "unit_price_aed": 2000.00,
+    "extended_price_aed": 20000.00,
+    "warranty_months": 12,
+    "lead_time_days": 30
+  }
+]

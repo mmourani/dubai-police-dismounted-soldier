@@ -185,12 +185,12 @@ export async function handleReadinessTool(name, args) {
 export function getQuestionRouting(question) {
     const who = question.who_to_ask || 'Unknown';
     const routingSuggestions = {
-        'Customer': 'Route to Dubai Police procurement team or project manager',
-        'SupplierINVISIO': 'Contact INVISIO sales team for audio equipment specs/pricing',
-        'SupplierSamsung': 'Contact Samsung Enterprise for device specifications',
-        'SupplierMount': 'Contact tactical equipment suppliers for mount systems',
+        'Customer': 'Route to client procurement team or project manager',
+        'SupplierPrimary': 'Contact primary supplier for equipment specs/pricing',
+        'SupplierSecondary': 'Contact secondary supplier for device specifications',
+        'SupplierMount': 'Contact equipment suppliers for mount/accessory systems',
         'Engineering': 'Internal engineering team review required',
-        'End-User': 'SWAT team feedback needed on operational requirements',
+        'End-User': 'End user feedback needed on operational requirements',
         'Market Intelligence': 'Research competitive solutions and pricing',
         'Legal': 'Legal/compliance review for export controls or regulations',
         'Finance': 'Finance team for budget approval or payment terms'

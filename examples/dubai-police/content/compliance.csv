@@ -1,0 +1,2 @@
+requirement_id,text,standard,evidence_ref,compliant,notes
+R-ENV-01,Ingress protection IP67,IEC 60529,Datasheets/IP,Yes,Confirmed in readiness snapshot

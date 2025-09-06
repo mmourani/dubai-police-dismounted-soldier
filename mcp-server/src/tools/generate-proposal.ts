@@ -11,7 +11,7 @@ const BUILDER_PATH = path.join(PROJECT_ROOT, 'ingested_data', 'meta', 'proposal_
 export const generateProposalTools: Tool[] = [
   {
     name: 'generate_proposal',
-    description: 'Generate a proposal from readiness snapshot in various formats (md/html/pdf/docx). Blocks if confidence < 95% unless force:true.',
+    description: 'Generate proposals from readiness snapshot (legacy mode) in various formats. Blocks if confidence < 95% unless force:true. Use --spec for content-first mode.',
     inputSchema: {
       type: 'object',
       properties: {

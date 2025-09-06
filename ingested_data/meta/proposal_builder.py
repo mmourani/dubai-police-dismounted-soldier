@@ -63,7 +63,7 @@ def load_spec_content(spec_paths):
 def md_section(title: str) -> str:
     return f"\n\n## {title}\n\n"
 
-def build_proposal(snap: dict, forced: bool) -> str:
+def build_proposal(snap: dict, forced: bool, spec_data: dict = None) -> str:
     conf = int((snap.get("confidence") or 0) * 100)
     gaps = snap.get("gaps", [])
     unresolved = [g for g in gaps if not g.get("resolved")]
@@ -72,18 +72,28 @@ def build_proposal(snap: dict, forced: bool) -> str:
     # Header
     out = []
     out.append(f"# Technical & Commercial Proposal\n")
-    out.append(f"**Client:** Dubai Police  \n**Project:** Dismounted Soldier Communication Kit  \n")
+    client = spec_data.get("client", "Dubai Police") if spec_data else "Dubai Police"
+    project = spec_data.get("project", "Dismounted Soldier Communication Kit") if spec_data else "Dismounted Soldier Communication Kit"
+    out.append(f"**Client:** {client}  \n**Project:** {project}  \n")
     out.append(f"**Confidence:** {conf}%{' (FORCED DRAFT)' if forced and conf < 95 else ''}  \n")
     out.append(f"**Generated:** {datetime.now().isoformat(timespec='seconds')}\n")
 
     # Executive Summary (lightweight template)
     out.append(md_section("Executive Summary"))
-    out.append(
-        "This proposal covers a dismounted soldier communication kit integrating **TETRA radio**, "
-        "**Samsung S23/S25** device, and **INVISIO** audio with dual PTT and in-ear protection, "
-        "mounted via a **foldable mid-torso bunker kit**. It addresses operational needs for Dubai Police SWAT "
-        "with ruggedization, runtime, and mission readiness.\n"
-    )
+    # Use appropriate executive summary based on project type
+    if spec_data and 'ai-platform' in spec_data.get('id', ''):
+        out.append(
+            f"This proposal presents a comprehensive solution for {client}'s {project}, "
+            "delivering advanced data processing capabilities with AI/ML integration, "
+            "scalable architecture, and enterprise-grade security.\n"
+        )
+    else:
+        out.append(
+            "This proposal covers a dismounted soldier communication kit integrating **TETRA radio**, "
+            "**Samsung S23/S25** device, and **INVISIO** audio with dual PTT and in-ear protection, "
+            f"mounted via a **foldable mid-torso bunker kit**. It addresses operational needs for {client} SWAT "
+            "with ruggedization, runtime, and mission readiness.\n"
+        )
 
     # Scope / Equipment
     equip = snap.get("detected_equipment", []) or []
@@ -224,13 +234,20 @@ def main():
                    help="Path to YAML spec file for content-driven generation (can be repeated)")
     args = p.parse_args()
 
-    snap = load_snapshot()
-    if not snap:
-        print(json.dumps({"success": False, "error": "No readiness snapshot found. Run 'readiness analyze' first."}))
-        sys.exit(0)
-
-    conf = int((snap.get("confidence") or 0) * 100)
-    if conf < 95 and not args.force:
+    # Content-first mode: Use spec files directly, bypassing snapshot confidence
+    if args.spec:
+        # Create minimal snapshot for spec-driven generation
+        snap = {"confidence": 1.0, "gaps": [], "vendor_quotes": []}
+        conf = 100
+    else:
+        # Legacy snapshot mode: Require existing snapshot and confidence
+        snap = load_snapshot()
+        if not snap:
+            print(json.dumps({"success": False, "error": "No readiness snapshot found. Run 'readiness analyze' first or use --spec for content-first mode."}))
+            sys.exit(0)
+        conf = int((snap.get("confidence") or 0) * 100)
+    
+    if conf < 95 and not args.force and not args.spec:
         # Find next critical question
         gaps = snap.get("gaps", [])
         unresolved = [g for g in gaps if not g.get("resolved")]
@@ -250,11 +267,19 @@ def main():
         }))
         sys.exit(0)
 
+    # Get project metadata from spec if available
+    spec_data = None
+    if args.spec:
+        spec_file = Path(args.spec[0])  # Use first spec file for metadata
+        if spec_file.exists():
+            with open(spec_file, 'r') as f:
+                spec_data = yaml.safe_load(f)
+    
     # Track which template was used (for DOCX auditing)
     template_used = None
     pdf_engine = None
     
-    content = build_proposal(snap, forced=(conf < 95))
+    content = build_proposal(snap, forced=(conf < 95), spec_data=spec_data)
     fmt = args.format
     
     # Determine output path based on format
@@ -379,8 +404,8 @@ def main():
         
         ctx = {
             "title": "Technical & Commercial Proposal",
-            "client": "Dubai Police",
-            "project": "Dismounted Soldier Communication Kit",
+            "client": spec_data.get("client", "Dubai Police") if spec_data else "Dubai Police",
+            "project": spec_data.get("project", "Dismounted Soldier Communication Kit") if spec_data else "Dismounted Soldier Communication Kit",
             "confidence": conf,
             "confidence_percent": f"{conf}%",
             "generated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),

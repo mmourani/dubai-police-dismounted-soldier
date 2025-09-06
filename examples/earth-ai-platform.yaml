@@ -1,0 +1,140 @@
+id: earth-ai-platform
+title: EARTH – AI Data Platform Proposal
+template: templates/proposal_template.docx   # e.g., proposal_template.docx
+client: EARTH
+project: AI Data Platform
+quantity: 10
+investment_range: "$500,000 - $750,000"
+
+metadata:
+  version: "v0.1"
+  last_updated: "2025-09-06"
+  status: "draft"
+  confidence_target: 95
+  review_required: true
+
+sections:
+  # Executive & Scope
+  - id: exec_summary
+    title: Executive Summary
+    output: content/earth-ai-platform/exec_summary.md
+    target_words: 250
+    priority: critical
+
+  - id: scope_of_work
+    title: Scope of Work & Supply
+    output: content/earth-ai-platform/scope_of_work.md
+    target_words: 400
+    priority: critical
+
+  # Technical Specifications
+  - id: system_architecture
+    title: System Architecture & Integration
+    output: content/earth-ai-platform/system_architecture.md
+    target_words: 500
+    diagrams:
+      - assets/earth-ai-platform-system-architecture.png
+    priority: high
+
+  - id: platform_architecture
+    title: Platform Architecture
+    output: content/earth-ai-platform/platform_architecture.md
+    target_words: 600
+    priority: high
+
+  - id: interoperability
+    title: Interoperability & Standards Compliance
+    output: content/earth-ai-platform/interoperability.md
+    target_words: 300
+    priority: high
+
+  - id: security
+    title: Security Model (Comms, Device, Data)
+    output: content/earth-ai-platform/security.md
+    target_words: 350
+    priority: high
+
+  - id: cloud_infrastructure_resilience
+    title: Cloud Infrastructure & Resilience
+    output: content/earth-ai-platform/cloud_infrastructure_resilience.md
+    target_words: 300
+    priority: medium
+
+  - id: data_governance_privacy
+    title: Data Governance & Privacy
+    output: content/earth-ai-platform/data_governance_privacy.md
+    target_words: 350
+    priority: critical
+
+  - id: ai_model_lifecycle
+    title: AI Model Lifecycle Management
+    output: content/earth-ai-platform/ai_model_lifecycle.md
+    target_words: 400
+    priority: high
+
+  - id: integration_client_systems
+    title: Integration with Client Systems
+    output: content/earth-ai-platform/integration_client_systems.md
+    target_words: 300
+    priority: high
+
+  # Procurement & Costing
+  - id: bom
+    title: Bill of Materials (BOM)
+    table_output: content/earth-ai-platform/bom.json
+    schema:
+      - part_no
+      - description
+      - supplier
+      - qty_per_kit
+      - kits
+      - unit_price_aed
+      - extended_price_aed
+      - warranty_months
+      - lead_time_days
+    priority: critical
+
+  - id: boq
+    title: Bill of Quantities (BOQ)
+    table_output: content/earth-ai-platform/boq.csv
+    schema_csv: "item,description,uom,quantity,rate_aed,amount_aed,notes"
+    priority: critical
+
+  # Compliance & Risk
+  - id: compliance_matrix
+    title: Compliance Matrix
+    table_output: content/earth-ai-platform/compliance.csv
+    schema_csv: "req_id,requirement,standard,compliance(Y/N/Partial),evidence,notes"
+    priority: high
+
+  - id: acceptance
+    title: Factory & Site Acceptance Criteria
+    output: content/earth-ai-platform/acceptance.md
+    target_words: 300
+    priority: high
+
+  - id: risk_register
+    title: Risk Register & Mitigation
+    table_output: content/earth-ai-platform/risk_register.csv
+    schema_csv: "risk_id,category,description,likelihood,impact,mitigation,owner,status"
+    priority: medium
+
+  # Delivery & Services
+  - id: delivery_timeline
+    title: Delivery Timeline & Milestones
+    output: content/earth-ai-platform/delivery_timeline.md
+    target_words: 250
+    priority: medium
+
+  - id: support_sla_warranty
+    title: Support, SLA & Warranty
+    output: content/earth-ai-platform/support_sla_warranty.md
+    target_words: 350
+    priority: medium
+
+  # Appendices
+  - id: assumptions_exclusions
+    title: Assumptions & Exclusions
+    output: content/earth-ai-platform/assumptions_exclusions.md
+    target_words: 220
+    priority: high

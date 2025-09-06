@@ -1,6 +1,6 @@
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
 import { readinessTools, handleReadinessTool } from './tools/readiness.js';
-import { allReadinessRoutes, handleReadinessCommand } from './tools/quick-router.js';
+import { allRoutes, handleCommand as handleRouterCommand } from './tools/quick-router.js';
 import { generateProposalTools, handleGenerateProposalTool } from './tools/generate-proposal.js';
 import { pingTools, handlePingTool } from './tools/ping.js';
 import { ingestTools, handleIngestTool } from './tools/ingest.js';
@@ -41,13 +41,11 @@ export async function handleToolInvocation(name: string, args: any): Promise<any
 
 // Command router for natural language
 export function handleCommand(command: string): any {
-  // Try readiness commands first
-  const result = handleReadinessCommand(command);
+  // Try all routed commands
+  const result = handleRouterCommand(command);
   if (result !== null) {
     return result;
   }
-  
-  // Add other command handlers here
   
   // No match
   return null;

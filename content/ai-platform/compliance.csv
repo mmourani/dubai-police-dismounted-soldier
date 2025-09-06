@@ -1,0 +1,5 @@
+req_id,requirement,standard,compliance,evidence,notes
+REQ-001,Equipment Safety,IEC 61010,Y,Certification docs,All equipment certified
+REQ-002,Environmental Rating,IP65,Y,Test reports,Water/dust protection verified  
+REQ-003,EMC Compliance,EN 55032,Y,EMC test report,Emissions within limits
+REQ-004,Quality Management,ISO 9001,Y,Supplier certificates,QMS certified suppliers

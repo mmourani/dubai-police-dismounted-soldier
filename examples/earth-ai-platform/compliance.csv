@@ -1,0 +1,9 @@
+req_id,requirement,standard,compliance,evidence,notes
+REQ-001,Data Privacy Protection,GDPR,Y,Privacy impact assessment,Full GDPR compliance framework implemented
+REQ-002,Personal Data Security,CCPA,Y,Data protection audit,California Consumer Privacy Act compliant
+REQ-003,Security Management,ISO 27001,Y,Security certification,Information security management system
+REQ-004,Service Organization Controls,SOC 2 Type II,Y,SOC audit report,Trust services criteria compliance
+REQ-005,Cloud Security,ISO 27017,Y,Cloud security assessment,Cloud-specific security controls
+REQ-006,Data Encryption,AES-256,Y,Encryption validation,Data at rest and in transit protection
+REQ-007,API Security,OWASP Top 10,Y,Security testing report,Web application security standards
+REQ-008,Access Control,RBAC/ABAC,Y,Access control audit,Role and attribute-based access systems

@@ -1,0 +1,9 @@
+line_id,description,unit,qty,rate_usd,subtotal_usd,notes
+BOQ-001,Project Management & Coordination,hours,120,150.00,18000.00,Senior project manager oversight and client coordination
+BOQ-002,System Analysis & Design,hours,80,175.00,14000.00,Technical architecture and system design documentation
+BOQ-003,Site Survey & Planning,days,5,800.00,4000.00,Pre-installation site assessment and preparation
+BOQ-004,Equipment Installation,days,12,1200.00,14400.00,Professional installation and configuration services
+BOQ-005,System Integration & Testing,hours,60,200.00,12000.00,Integration with existing systems and comprehensive testing
+BOQ-006,User Training & Documentation,days,8,750.00,6000.00,Comprehensive training program and documentation delivery
+BOQ-007,Go-Live Support,hours,40,180.00,7200.00,Dedicated support during initial deployment phase
+BOQ-008,Warranty & Support Package,months,12,500.00,6000.00,12-month comprehensive support and maintenance package

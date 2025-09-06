@@ -1,0 +1,11 @@
+requirement_id,description,standard_ref,priority,status,evidence,notes
+COMP-001,Information Security Management,ISO/IEC 27001,High,Compliant,Security audit report,Comprehensive ISMS implementation
+COMP-002,Quality Management System,ISO 9001,High,Compliant,QMS certification,Certified quality processes
+COMP-003,Data Protection Regulation,GDPR Article 32,High,Compliant,Privacy impact assessment,Technical and organizational measures
+COMP-004,Cybersecurity Framework,NIST CSF,Medium,Compliant,Security assessment,Five-function framework implementation
+COMP-005,Network Security Standards,IEEE 802.1X,Medium,Compliant,Network configuration docs,Port-based access control
+COMP-006,Encryption Standards,FIPS 140-2,High,Compliant,Cryptographic module testing,Level 2 validated modules
+COMP-007,Environmental Management,ISO 14001,Low,Compliant,Environmental certification,Sustainable practices verified
+COMP-008,Business Continuity Management,ISO 22301,Medium,In Progress,BCP documentation,Implementation ongoing
+COMP-009,Risk Management Standards,ISO 31000,Medium,Compliant,Risk assessment report,Systematic risk management
+COMP-010,Software Development Security,OWASP ASVS,High,Compliant,Security code review,Application security verification

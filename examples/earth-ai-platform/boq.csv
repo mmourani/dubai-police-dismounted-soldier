@@ -1,0 +1,9 @@
+item,description,uom,quantity,rate_aed,amount_aed,notes
+1,AI Data Platform Core System,lot,10,78000,780000,Complete AI/ML platform with licensing
+2,Cloud Infrastructure Setup,months,8,35000,280000,Enterprise cloud environment provisioning
+3,Data Pipeline Development,lot,1,125000,125000,Custom ETL/ELT pipeline implementation
+4,ML Operations Suite Integration,lot,1,85000,85000,MLOps tools and model lifecycle management
+5,API Gateway & Integration Services,lot,1,65000,65000,RESTful/GraphQL APIs and system integration
+6,Training & Knowledge Transfer,days,22,2500,55000,Comprehensive training program (88 hours)
+7,Project Management & Coordination,months,8,12000,96000,PM oversight and stakeholder coordination
+8,Quality Assurance & Testing,lot,1,35000,35000,UAT and performance validation

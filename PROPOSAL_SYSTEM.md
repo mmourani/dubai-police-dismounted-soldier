@@ -1,19 +1,28 @@
-# Dubai Police Proposal Generation System
+# MCP Proposal Generation System
 
 ## Status
 
-[![Proposal CI](https://github.com/mmourani/dubai-police-dismounted-soldier/actions/workflows/proposal-ci.yml/badge.svg)](https://github.com/mmourani/dubai-police-dismounted-soldier/actions/workflows/proposal-ci.yml)
+[![Proposal CI](https://github.com/user/project/actions/workflows/proposal-ci.yml/badge.svg)](https://github.com/user/project/actions/workflows/proposal-ci.yml)
 ![Confidence](https://img.shields.io/badge/confidence-100%25-brightgreen?style=flat&logo=checkmarx)
 ![Formats](https://img.shields.io/badge/export-MD%2FHTML%2FPDF%2FDOCX-blue?style=flat&logo=microsoftword)
 ![Audit](https://img.shields.io/badge/audit--trail-enabled-orange?style=flat&logo=lock)
 
 ## Quick Start
 
-### Generate Proposals
+### Content-First Mode (NEW)
 ```bash
-npm run proposal:docx    # Generate Word document (uses BEACON RED template)
+# Generate from spec + content
+python3 ingested_data/meta/proposal_builder.py \
+  --spec spec/my-project.yaml \
+  --format docx \
+  --out outputs/my-project-proposal.docx
+```
+
+### Snapshot Mode (Legacy)
+```bash
+npm run proposal:docx    # Generate from readiness snapshot
 npm run proposal:pdf     # Generate PDF
-npm run proposal:all     # Generate both DOCX and PDF
+npm run proposal:all     # Generate both formats
 ```
 
 ### Check Readiness
@@ -28,6 +37,22 @@ npm run mcp:build        # Rebuild TypeScript
 npm run mcp:run          # Start MCP server
 npm run mcp:test:docx    # Test DOCX generation via MCP
 ```
+
+## Dual-Mode Operation
+
+### Content-First Mode (Recommended)
+Section-by-section collaborative approach:
+- Create YAML specification (`spec/project.yaml`)
+- Develop content in markdown files (`content/project/`)
+- Populate structured data (BOM, BOQ, compliance tables)
+- Generate professional documents when ready
+
+### Snapshot Mode (Legacy)
+Traditional confidence-based generation:
+- Analyzes existing project documents
+- Builds confidence score (0-100%)
+- Generates proposals when confidence >95%
+- Uses readiness snapshot for content
 
 ## System Overview
 
@@ -69,20 +94,20 @@ npm run mcp:test:docx    # Test DOCX generation via MCP
 - Final proposals without "DRAFT" banner
 - Clean output without assumptions section
 
-### Key Gap IDs:
-- `scope_clarity`: Equipment confirmation
-- `operational`: IP67, runtime, MIL-STD requirements  
-- `competition`: Competitor landscape
-- `timeline`: Delivery schedule
+### Key Gap IDs (Snapshot Mode):
+- `scope_clarity`: Equipment/solution confirmation
+- `operational`: Technical requirements validation
+- `competition`: Competitive landscape analysis
+- `timeline`: Delivery schedule definition
 - `gfe_clarify`: Government furnished equipment
-- `exclusions`: Towers/SC4200/Silvus confirmation
+- `exclusions`: Scope boundary clarification
 
 ## Template Placeholders (DOCX)
 
 ### Basic Fields
-- `{{ client }}` - Dubai Police
-- `{{ project }}` - Dismounted Soldier Communication Kit
-- `{{ confidence_percent }}` - e.g., "100%"
+- `{{ client }}` - Client organization name
+- `{{ project }}` - Project title
+- `{{ confidence_percent }}` - e.g., "100%" 
 - `{{ generated_at }}` - Timestamp
 - `{{ is_draft }}` - Boolean for draft mode
 
@@ -133,9 +158,9 @@ cd mcp-server && npm install
 
 ### Template Not Found
 Check these locations in order:
-1. `templates/proposal_template.docx`
-2. `BEACON RED - Technical proposal - June 2024 - V3.docx` (root)
-3. `/Users/user/Desktop/BEACON RED - Technical proposal - June 2024 - V3.docx`
+1. `templates/proposal_template.docx` (preferred)
+2. `templates/your-template.docx` (custom template)
+3. Default template in project root (legacy)
 
 ### PDF Generation Issues
 - Requires Puppeteer: `npm install puppeteer`
@@ -200,8 +225,9 @@ On every push to `main`, GitHub Actions will automatically:
 ```bash
 ".git" ".github" ".gitattributes" ".gitignore"
 "mcp-server" "ingested_data" "proposals" "releases" "templates"
+"spec" "content" "assets" "outputs" "examples"
 "package.json" "package-lock.json" "requirements-proposals.txt"
-"PROPOSAL_SYSTEM.md" "README.md" "README_FIRST.md"
+"PROPOSAL_SYSTEM.md" "GET_STARTED_GENERIC.md" "README.md"
 "html_to_pdf_converter.js" "node_modules" ".claude" "archive"
 ```
 
@@ -213,36 +239,38 @@ On every push to `main`, GitHub Actions will automatically:
 
 ### Example Release Workflow
 ```bash
-# 1. Generate fresh proposals
-npm run proposal:all
+# 1. Generate fresh proposals (content-first mode)
+python3 ingested_data/meta/proposal_builder.py \
+  --spec spec/my-project.yaml \
+  --format all \
+  --out outputs/my-project
 
 # 2. Stage a new release
-mkdir -p releases/dubai-police-swat-v1.1
-cp proposals/dubai-police-swat-final/*.pdf releases/dubai-police-swat-v1.1/
-cp proposals/dubai-police-swat-final/*.docx releases/dubai-police-swat-v1.1/
-shasum -a 256 releases/dubai-police-swat-v1.1/* > "releases/dubai-police-swat-v1.1/SHASUMS256.txt"
+mkdir -p releases/my-project-v1.1
+cp outputs/my-project*.* releases/my-project-v1.1/
+shasum -a 256 releases/my-project-v1.1/* > "releases/my-project-v1.1/SHASUMS256.txt"
 
 # 3. Push to main (CI auto-archives legacy content)
 git add -A
-git commit -m "chore(release): stage dubai-police-swat-v1.1"
+git commit -m "chore(release): stage my-project-v1.1"
 git push origin main
 
 # 4. Tag the release (after CI passes)
 git pull --rebase
-git tag -a "release-dubai-police-swat-v1.1" -m "Release v1.1 (CI auto-archive applied)"
-git push origin "release-dubai-police-swat-v1.1"
+git tag -a "release-my-project-v1.1" -m "Release v1.1"
+git push origin "release-my-project-v1.1"
 ```
 
 ### Archive Structure
 ```
 archive/
-├── dubai-police-swat-v1.0/          # Version-tagged archive
-│   ├── Dubai_Police_Project/        # Original development files
-│   ├── Datasheets/                  # Reference materials
-│   ├── pictures/                    # Visual assets
-│   ├── logs/                        # System logs
-│   └── legacy-files...              # All archived content
-└── 2025-09-06_14-16-59/            # Timestamp-based archive
+├── project-v1.0/                   # Version-tagged archive
+│   ├── Project_Files/              # Original development files
+│   ├── Datasheets/                 # Reference materials
+│   ├── assets/                     # Visual assets
+│   ├── logs/                       # System logs
+│   └── legacy-files...             # All archived content
+└── 2025-09-06_14-16-59/           # Timestamp-based archive
     └── legacy-content...
 ```
 
@@ -272,8 +300,21 @@ cd releases/2025-09-05_v1.0
 shasum -c SHASUMS256.txt
 ```
 
+## FAQ - Generic Mode
+
+**Q: What lives at repo root?**
+A: Only essential project files: spec/, content/, templates/, outputs/, mcp-server/, and system files. Development clutter is contained in mcp-server/ or archived.
+
+**Q: How to keep node_modules out of client zips?**  
+A: Node dependencies are isolated in mcp-server/ directory. Root contains only client-deliverable content.
+
+**Q: How to archive old runs?**
+A: CI automatically archives legacy content to archive/ with version tags. Manual archiving available via npm scripts.
+
+**Q: Can I use both content-first and snapshot modes?**
+A: Yes! Content-first is recommended for new projects. Snapshot mode provides backwards compatibility.
+
 ---
-*System validated: 2025-09-05*
-*Confidence: 100%*
-*All exclusions confirmed: NO towers, NO SC4200/4400, NO Silvus radios*
-*Template: BEACON RED Technical Proposal V3*
+*Generic MCP Proposal System*
+*Multi-format export: MD, HTML, PDF, DOCX*
+*Professional template integration*

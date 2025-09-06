@@ -1,31 +1,48 @@
-# Sensitive Documents
+# Generated Outputs (keep in outputs/ for review but exclude from git)
+outputs/
 *.pdf
+*.docx
 *pricing*
 *confidential*
 
 # System Files
 .DS_Store
 Thumbs.db
-
-# Logs
 *.log
 
-# Temporary Files
+# Temporary Files  
 *.tmp
 *.temp
 ~*
-
-# Backup Files
 *.bak
 *.backup
 
-# IDE Files
+# Development Environment
 .vscode/
 .idea/
+.env
+.env.*
+node_modules/
 
-# Version Control
-.git/
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+.pytest_cache/
+.coverage
 
-# Dubai Police Project Specific
+# MCP Server Build
+mcp-server/dist/
+mcp-server/node_modules/
+
+# Session Data
+ingested_data/meta/session.*
+ingested_data/meta/draft.*
+
+# Client-Specific Confidential Content
 *_CONFIDENTIAL*
-*pricing_internal*
+*_confidential*
+*_INTERNAL*
