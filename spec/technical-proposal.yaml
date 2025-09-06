@@ -1,0 +1,36 @@
+id: technical-proposal
+title: Technical Proposal
+template: templates/proposal_template.docx
+sections:
+  - id: exec_summary
+    title: Executive Summary
+    output: content/technical-proposal/exec_summary.md
+    target_words: 250
+  - id: scope
+    title: Scope of Supply
+    output: content/technical-proposal/scope.md
+  - id: system_arch
+    title: System Architecture
+    output: content/technical-proposal/system_arch.md
+    diagram: assets/system-overview.png
+  - id: ruggedization
+    title: Environmental & Ruggedization
+    output: content/technical-proposal/ruggedization.md
+  - id: integration_testing
+    title: Integration & Testing
+    output: content/technical-proposal/integration_testing.md
+  - id: bom
+    title: Bill of Materials
+    table_output: content/technical-proposal/bom.json
+  - id: compliance
+    title: Compliance Matrix
+    table_output: content/technical-proposal/compliance.csv
+  - id: support
+    title: Warranty & Support
+    output: content/technical-proposal/support.md
+  - id: assumptions_risks
+    title: Assumptions & Risks
+    output: content/technical-proposal/assumptions_risks.md
+  - id: delivery_timeline
+    title: Delivery Plan & Timeline
+    output: content/technical-proposal/delivery_timeline.md

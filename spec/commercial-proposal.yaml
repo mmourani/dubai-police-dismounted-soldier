@@ -1,0 +1,19 @@
+id: commercial-proposal
+title: Commercial Proposal
+template: templates/proposal_template.docx
+sections:
+  - id: pricing_summary
+    title: Pricing Summary
+    output: content/commercial-proposal/pricing_summary.md
+  - id: boq
+    title: Bill of Quantities
+    table_output: content/commercial-proposal/boq.csv
+  - id: terms
+    title: Commercial Terms
+    output: content/commercial-proposal/terms.md
+  - id: delivery_milestones
+    title: Delivery & Milestones
+    output: content/commercial-proposal/delivery_milestones.md
+  - id: exclusions
+    title: Exclusions
+    output: content/commercial-proposal/exclusions.md

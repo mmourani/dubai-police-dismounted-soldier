@@ -1,0 +1,57 @@
+[
+  {
+    "item_no": 1,
+    "description": "INVISIO X7 in-ear communication system with hearing protection",
+    "qty": 10,
+    "unit": "ea",
+    "manufacturer": "INVISIO",
+    "part_no": "X7-001",
+    "unit_price_aed": 8485,
+    "extended_price_aed": 84850,
+    "notes": "39dB noise reduction, tactical grade"
+  },
+  {
+    "item_no": 2,
+    "description": "INVISIO V60 4-button PTT control unit",
+    "qty": 10,
+    "unit": "ea",
+    "manufacturer": "INVISIO",
+    "part_no": "V60-004",
+    "unit_price_aed": 8485,
+    "extended_price_aed": 84850,
+    "notes": "Multi-channel tactical PTT"
+  },
+  {
+    "item_no": 3,
+    "description": "Samsung Galaxy S23 Ultra (512GB, tactical configuration)",
+    "qty": 10,
+    "unit": "ea",
+    "manufacturer": "Samsung",
+    "part_no": "SM-S918B-512",
+    "unit_price_aed": 4587,
+    "extended_price_aed": 45870,
+    "notes": "5G enabled, TETRA ready"
+  },
+  {
+    "item_no": 4,
+    "description": "MIL-STD chest mount system with quick release",
+    "qty": 10,
+    "unit": "kit",
+    "manufacturer": "Tactical Solutions",
+    "part_no": "TSI-CM-001",
+    "unit_price_aed": 1295,
+    "extended_price_aed": 12950,
+    "notes": "Includes battery pack and cables"
+  },
+  {
+    "item_no": 5,
+    "description": "Extended battery system (8+ hour operation)",
+    "qty": 10,
+    "unit": "kit",
+    "manufacturer": "PowerTac",
+    "part_no": "PT-EXT-8H",
+    "unit_price_aed": 1295,
+    "extended_price_aed": 12950,
+    "notes": "Hot-swappable, tactical grade"
+  }
+]

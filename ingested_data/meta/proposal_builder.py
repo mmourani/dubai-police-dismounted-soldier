@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-import json, sys, argparse, subprocess, tempfile, shutil, os
+import json, sys, argparse, subprocess, tempfile, shutil, os, csv
 from pathlib import Path
 from datetime import datetime
+import yaml
 
 ROOT = Path(__file__).resolve().parents[2]  # project root
 META_DIR = ROOT / "ingested_data" / "meta"
@@ -11,6 +12,53 @@ def load_snapshot():
     if not SNAPSHOT.exists():
         return None
     return json.loads(SNAPSHOT.read_text())
+
+def load_spec_content(spec_paths):
+    """Load content from YAML spec files and return merged context data"""
+    spec_content = {}
+    
+    for spec_path in spec_paths:
+        spec_file = Path(spec_path)
+        if not spec_file.exists():
+            continue
+            
+        try:
+            with open(spec_file, 'r') as f:
+                spec_data = yaml.safe_load(f)
+            
+            spec_id = spec_data.get('id', 'unknown')
+            spec_content[spec_id] = {}
+            
+            # Process each section in the spec
+            for section in spec_data.get('sections', []):
+                section_id = section.get('id')
+                
+                # Handle markdown content
+                if 'output' in section:
+                    md_path = ROOT / section['output']
+                    if md_path.exists():
+                        content = md_path.read_text(encoding='utf-8').strip()
+                        spec_content[spec_id][section_id] = content
+                
+                # Handle table content (JSON/CSV)
+                if 'table_output' in section:
+                    table_path = ROOT / section['table_output']
+                    if table_path.exists():
+                        if table_path.suffix == '.json':
+                            with open(table_path, 'r') as f:
+                                table_data = json.load(f)
+                            spec_content[spec_id][f"{section_id}_items"] = table_data
+                        elif table_path.suffix == '.csv':
+                            with open(table_path, 'r') as f:
+                                reader = csv.DictReader(f)
+                                table_data = list(reader)
+                            spec_content[spec_id][f"{section_id}_rows"] = table_data
+                            
+        except Exception as e:
+            print(f"Warning: Failed to load spec {spec_path}: {e}", file=sys.stderr)
+            continue
+    
+    return spec_content
 
 def md_section(title: str) -> str:
     return f"\n\n## {title}\n\n"
@@ -172,6 +220,8 @@ def main():
                    help="Export format (default: md). 'pdf' uses html_to_pdf_converter.js, 'docx' uses template")
     p.add_argument("--template", default=None,
                    help="Path to DOCX template (for --format docx). Defaults to templates/proposal_template.docx")
+    p.add_argument("--spec", action="append", default=[],
+                   help="Path to YAML spec file for content-driven generation (can be repeated)")
     args = p.parse_args()
 
     snap = load_snapshot()
@@ -301,7 +351,12 @@ def main():
             }))
             sys.exit(1)
         
-        # Build rendering context from snapshot + derived text
+        # Load spec-driven content if provided
+        spec_content = {}
+        if args.spec:
+            spec_content = load_spec_content(args.spec)
+        
+        # Build rendering context from snapshot + derived text + spec content
         gaps = snap.get("gaps", []) or []
         unresolved = [g for g in gaps if not g.get("resolved")]
         quotes = snap.get("vendor_quotes", []) or []
@@ -331,25 +386,52 @@ def main():
             "generated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             "is_draft": conf < 95,
             
-            # Major text sections
+            # Major text sections (enhanced with spec content)
             "executive_summary": (
+                spec_content.get("technical-proposal", {}).get("exec_summary") or
                 "This proposal covers a dismounted soldier communication kit integrating "
                 "TETRA radio, Samsung S23/S25 device, and INVISIO audio with dual PTT and "
                 "in-ear protection, mounted via a foldable mid-torso bunker kit. "
                 "It addresses operational needs for Dubai Police SWAT with ruggedization, "
                 "runtime, and mission readiness."
             ),
-            "scope_confirmed": gap_ans("scope_clarity") or "Confirmed: NO towers, NO SC4200/4400, NO Silvus radios",
+            "scope_confirmed": (
+                spec_content.get("technical-proposal", {}).get("scope") or
+                gap_ans("scope_clarity") or 
+                "Confirmed: NO towers, NO SC4200/4400, NO Silvus radios"
+            ),
+            "system_architecture": spec_content.get("technical-proposal", {}).get("system_arch", ""),
+            "ruggedization": spec_content.get("technical-proposal", {}).get("ruggedization", ""),
+            "integration_testing": spec_content.get("technical-proposal", {}).get("integration_testing", ""),
+            "warranty_support": spec_content.get("technical-proposal", {}).get("support", ""),
+            "assumptions_risks": spec_content.get("technical-proposal", {}).get("assumptions_risks", ""),
             "operational_requirements": gap_ans("operational") or 
                 "Pending confirmation (IP rating, runtime, MIL-STD, temperature).",
             "competitive_landscape": gap_ans("competition") or "Unknown at this time.",
-            "delivery_timeline": gap_ans("timeline") or "Pending confirmation.",
-            "exclusions_text": "NO towers, NO SC4200/4400, NO Silvus radios",
+            "delivery_timeline": (
+                spec_content.get("technical-proposal", {}).get("delivery_timeline") or
+                gap_ans("timeline") or 
+                "Pending confirmation."
+            ),
+            "exclusions_text": (
+                spec_content.get("commercial-proposal", {}).get("exclusions") or
+                "NO towers, NO SC4200/4400, NO Silvus radios"
+            ),
+            
+            # Commercial proposal sections
+            "pricing_summary": spec_content.get("commercial-proposal", {}).get("pricing_summary", ""),
+            "commercial_terms": spec_content.get("commercial-proposal", {}).get("terms", ""),
+            "delivery_milestones": spec_content.get("commercial-proposal", {}).get("delivery_milestones", ""),
             
             # Lists for looping
             "detected_equipment": snap.get("detected_equipment") or [],
             "gfe_items": gfe_items,
             "quotes": quotes,
+            
+            # Table data from specs
+            "bom_items": spec_content.get("technical-proposal", {}).get("bom_items", []),
+            "compliance_rows": spec_content.get("technical-proposal", {}).get("compliance_rows", []),
+            "boq_rows": spec_content.get("commercial-proposal", {}).get("boq_rows", []),
             
             # Assumptions list only if anything unresolved
             "assumptions": [
