@@ -1,0 +1,7 @@
+| Supplier | Priority | Lead Time | Risk Level | Action Required |
+|----------|----------|-----------|------------|-----------------|
+| INVISIO | HIGH | 4-6 weeks | Low | Contact Abu Dhabi office |
+| Samsung S25 | HIGH | 2-3 weeks | Medium | Pre-order via MDS Mobile |
+| Power System | CRITICAL | 3-4 weeks | High | Validate specifications |
+| Bunker Case | MEDIUM | 2-3 weeks | Low | Standard order |
+| Cables | HIGH | 2-3 weeks | Medium | Custom fabrication quote |

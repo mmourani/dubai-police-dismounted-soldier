@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dubai Police SWAT - ROM Proposal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #ffffff;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 30px;
+            background: white;
+        }
+        
+        h1 {
+            color: #1a1a1a;
+            font-size: 28px;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 10px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #1a1a1a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        h2 {
+            color: #1a1a1a;
+            font-size: 18px;
+            font-weight: 500;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e0e0e0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        h3 {
+            color: #333333;
+            font-size: 14px;
+            font-weight: 500;
+            margin: 25px 0 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666666;
+            font-size: 14px;
+            margin-bottom: 5px;
+            font-weight: 400;
+        }
+        
+        .date {
+            text-align: center;
+            color: #333333;
+            font-weight: 500;
+            margin-bottom: 30px;
+            font-size: 13px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+        }
+        
+        th {
+            background: #f8f8f8;
+            color: #1a1a1a;
+            padding: 12px;
+            text-align: left;
+            font-weight: 500;
+            border: 1px solid #e0e0e0;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.3px;
+        }
+        
+        td {
+            padding: 10px 12px;
+            border: 1px solid #e0e0e0;
+            color: #444444;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+        
+        .price-highlight {
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+        
+        .executive-summary {
+            background: #f8f8f8;
+            padding: 25px;
+            margin: 30px 0;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .executive-summary p {
+            margin: 8px 0;
+            font-size: 14px;
+        }
+        
+        .note {
+            color: #666666;
+            font-style: italic;
+            margin: 10px 0;
+            padding: 10px;
+            background: #fafafa;
+            border-left: 2px solid #e0e0e0;
+            font-size: 13px;
+        }
+        
+        ul {
+            margin: 15px 0 15px 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+            color: #444444;
+            font-size: 14px;
+        }
+        
+        strong {
+            color: #1a1a1a;
+            font-weight: 500;
+        }
+        
+        .checkmark {
+            color: #333333;
+            font-weight: normal;
+        }
+        
+        hr {
+            border: none;
+            border-top: 1px solid #e0e0e0;
+            margin: 40px 0;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e0e0e0;
+            color: #666666;
+            font-size: 13px;
+        }
+        
+        .reference {
+            font-weight: 500;
+            color: #1a1a1a;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+        
+        .section {
+            margin: 30px 0;
+        }
+        
+        @media print {
+            body {
+                font-size: 11pt;
+            }
+            .container {
+                padding: 20px;
+                max-width: 100%;
+            }
+            h1 {
+                font-size: 20pt;
+            }
+            h2 {
+                page-break-before: auto;
+                page-break-after: avoid;
+                font-size: 14pt;
+            }
+            table {
+                page-break-inside: avoid;
+                font-size: 10pt;
+            }
+            .executive-summary {
+                page-break-inside: avoid;
+            }
+        }
+        
+        @page {
+            size: A4;
+            margin: 20mm;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Rough Order of Magnitude</h1>
+        <div class="subtitle">Dubai Police SWAT Tactical Communication System</div>
+        <div class="subtitle">Delivered Duty Paid to Dubai Police Facility</div>
+        <div class="date">Date: August 29, 2025</div>
+        
+        <hr>
+        
+        <div class="executive-summary">
+            <h2>Executive Summary</h2>
+            <p><strong>Delivery Terms:</strong> DDP - Delivered Duty Paid to Dubai Police</p>
+            <p><strong>System:</strong> Complete Tactical Communication Platform</p>
+            <p><strong>Quantity Options:</strong> 6-10 Units</p>
+            <p><strong>Price Per Kit:</strong> <span class="price-highlight">AED 64,200</span> (All Inclusive)</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Quantity</th>
+                        <th>Total Investment (AED)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>6 Kits</td>
+                        <td class="price-highlight">385,200</td>
+                    </tr>
+                    <tr>
+                        <td>8 Kits</td>
+                        <td class="price-highlight">513,600</td>
+                    </tr>
+                    <tr>
+                        <td>10 Kits</td>
+                        <td class="price-highlight">642,000</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="note">Price includes all shipping, customs, duties, VAT, and delivery to your facility</p>
+        </div>
+        
+        <div class="section">
+            <h2>System Configuration</h2>
+            <h3>Components Per Operator</h3>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Specification</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>INVISIO V60 II</strong></td>
+                        <td>Tactical control unit with 4 PTT buttons</td>
+                        <td>Multi-channel audio management</td>
+                    </tr>
+                    <tr>
+                        <td><strong>INVISIO X7</strong></td>
+                        <td>In-ear headset, 39dB noise reduction</td>
+                        <td>Clear communication in extreme noise</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Samsung Galaxy S23 Ultra</strong></td>
+                        <td>512GB, 5G enabled</td>
+                        <td>Data device for ATAK</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bunker MAAK Case</strong></td>
+                        <td>MIL-STD-810H tactical case</td>
+                        <td>Device protection & mounting</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Power System</strong></td>
+                        <td>Dual 21,000mAh hot-swappable</td>
+                        <td>8-hour continuous operation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cable System</strong></td>
+                        <td>4× MIL-SPEC tactical cables</td>
+                        <td>System interconnection</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mounting Hardware</strong></td>
+                        <td>Forearm & vest integration</td>
+                        <td>Ergonomic positioning</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p class="note">Note: Tetra radio to be provided by Dubai Police | ATAK software to be installed by Dubai Police</p>
+        </div>
+        
+        <div class="section">
+            <h2>Detailed Pricing Breakdown</h2>
+            <h3>Per Kit Investment (DDP Basis)</h3>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Components</th>
+                        <th>Price (AED)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Audio System</strong></td>
+                        <td>INVISIO V60 II control unit + X7 headset</td>
+                        <td>27,900</td>
+                    </tr>
+                    <tr>
+                        <td><strong>End User Device</strong></td>
+                        <td>Samsung S23 Ultra + Bunker case</td>
+                        <td>10,200</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Power System</strong></td>
+                        <td>Dual batteries + controller + charger</td>
+                        <td>10,850</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cables & Connectors</strong></td>
+                        <td>4× tactical cables + management</td>
+                        <td>5,400</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Integration</strong></td>
+                        <td>Mounting hardware + pouches</td>
+                        <td>2,800</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Services</strong></td>
+                        <td>Assembly, testing, certification</td>
+                        <td>6,250</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Documentation</strong></td>
+                        <td>Manuals and quick reference guides</td>
+                        <td>800</td>
+                    </tr>
+                    <tr style="border-top: 2px solid #333;">
+                        <td><strong>TOTAL PER KIT</strong></td>
+                        <td><strong>Delivered to Dubai Police</strong></td>
+                        <td class="price-highlight"><strong>64,200</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p class="note">All prices include international shipping, customs clearance, duties, VAT, insurance, and final delivery</p>
+        </div>
+        
+        <div class="section">
+            <h2>DDP Service Includes</h2>
+            
+            <h3>Logistics & Import Services</h3>
+            <ul>
+                <li>International air freight from multiple origins</li>
+                <li>Air cargo insurance (2% of value)</li>
+                <li>UAE customs duty (5%)</li>
+                <li>UAE VAT (5%)</li>
+                <li>Customs clearance and documentation</li>
+                <li>Handling and warehousing</li>
+                <li>Final delivery to Dubai Police facility</li>
+                <li>Unloading and handover</li>
+            </ul>
+            
+            <h3>Risk Coverage</h3>
+            <ul>
+                <li>Currency fluctuation protection</li>
+                <li>Air cargo damage insurance</li>
+                <li>Delay penalties waived</li>
+                <li>Priority re-shipment by air if customs rejected</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Warranty Coverage</h2>
+            <h3>Standard Warranty - 12 Months</h3>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Coverage Type</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Covered Components</strong></td>
+                        <td>INVISIO V60 II, INVISIO X7, Power system, Samsung device</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Coverage Includes</strong></td>
+                        <td>Manufacturing defects, Component failure, Free replacement (DDP), Technical support</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Limited Coverage (90 days)</strong></td>
+                        <td>Cables, connectors, mounting hardware</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h2>Terms & Conditions</h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Included</th>
+                        <th>Excluded</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            • All components as specified<br>
+                            • DDP delivery to Dubai<br>
+                            • 12-month warranty<br>
+                            • Basic documentation<br>
+                            • Single consolidated shipment
+                        </td>
+                        <td>
+                            • Training (optional)<br>
+                            • Annual support (optional)<br>
+                            • Spare parts (optional)<br>
+                            • Tetra radios (customer provided)<br>
+                            • ATAK software (customer installed)<br>
+                            • Tactical vests
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h2>Payment Terms</h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Milestone</th>
+                        <th>Percentage</th>
+                        <th>10 Kits Example (AED)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Contract Signing</td>
+                        <td>30%</td>
+                        <td>192,600</td>
+                    </tr>
+                    <tr>
+                        <td>Shipment Departure</td>
+                        <td>40%</td>
+                        <td>256,800</td>
+                    </tr>
+                    <tr>
+                        <td>Delivery & Acceptance</td>
+                        <td>30%</td>
+                        <td>192,600</td>
+                    </tr>
+                    <tr style="border-top: 2px solid #333;">
+                        <td><strong>Total</strong></td>
+                        <td><strong>100%</strong></td>
+                        <td><strong>642,000</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <hr>
+        
+        <div class="footer">
+            <p class="note">This ROM is valid for 30 days. Prices are fixed in AED and include all costs to deliver to Dubai Police facility.</p>
+            <p class="reference">Document Reference: DP-SWAT-ROM-DDP-2025-FINAL</p>
+            <p><strong>END OF DOCUMENT</strong></p>
+        </div>
+    </div>
+</body>
+</html>

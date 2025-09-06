@@ -1,0 +1,7 @@
+| Problem | Solution |
+|---------|----------|
+| Too artistic | Add "technical drawing, no artistic interpretation" |
+| Wrong size | Include exact mm dimensions |
+| Bad perspective | Specify "orthographic" or "isometric" |
+| Missing details | Add "ultra-detailed" or "high detail" |
+| Wrong style | Use "MIL-STD" or "ISO technical standard" |

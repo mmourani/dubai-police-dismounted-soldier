@@ -1,0 +1,51 @@
+| Quantity | Total Investment (AED) |
+|----------|----------------------|
+| 6 Kits | **666,300** |
+| 8 Kits | **888,400** |
+| 10 Kits | **1,110,500** |
+| Component | Specification | Purpose |
+|-----------|--------------|---------|
+| **INVISIO V60 II** | Tactical control unit with 4 PTT buttons | Multi-channel audio management |
+| **INVISIO X7** | In-ear headset, 39dB noise reduction | Clear communication in extreme noise |
+| **Samsung Galaxy S23 Ultra** | 512GB, 5G enabled | Data device for ATAK |
+| **Bunker MAAK Case** | MIL-STD-810H tactical case | Device protection & mounting |
+| **Power System** | Dual 21,000mAh hot-swappable | 8-hour continuous operation |
+| **Cable System** | 4× MIL-SPEC tactical cables | System interconnection |
+| **Mounting Hardware** | Forearm & vest integration | Ergonomic positioning |
+| Category | Components | Price (AED) |
+|----------|-----------|------------|
+| **Audio System** | **INVISIO X7 + Complete Bundle (V60 Gen2 + Scout Battery + Chest Mount + MAAK Case + USB-C Cable)** | **42,050** |
+| **End User Device** | Samsung S23 Ultra ~~+ Bunker case~~ | **10,195** |
+| ~~Power System~~ | ~~Integrated in INVISIO Bundle~~ | ~~0~~ |
+| **Cables & Connectors** | 2× tactical cables + management | **3,625** |
+| **Integration** | Mounting hardware + pouches | **1,587** |
+| **Services** | Assembly, testing, certification | **10,196** |
+| **Documentation** | Manuals and quick reference guides | **962** |
+| **SUBTOTAL PER KIT** | **Equipment Only** | **68,615** |
+| **Engineering Services** | German engineering (1 week) - **PROJECT TOTAL** | **34,406** |
+| **Administrative Services** | Administrative support (1 week) - **PROJECT TOTAL** | **8,029** |
+| **PROJECT SERVICES TOTAL** | **One-time costs for entire project** | **42,435** |
+| Quantity | Calculation | Total (AED) |
+|----------|-------------|-------------|
+| 6 Kits | (68,615 × 6) + 42,435 | **457,875** |
+| 8 Kits | (68,615 × 8) + 42,435 | **592,785** |
+| 10 Kits | (68,615 × 10) + 42,435 | **727,695** |
+| Quantity | Spare Parts Investment (AED) |
+|----------|----------------------------|
+| For 6 Kits | 77,000 |
+| For 8 Kits | 103,000 |
+| For 10 Kits | 128,000 |
+| Milestone | Percentage | 10 Kits Example (AED) |
+|-----------|------------|--------------------|
+| Contract Signing | 30% | 208,845 |
+| Shipment Departure | 40% | 278,460 |
+| Delivery & Acceptance | 30% | 208,845 |
+| **Total** | 100% | **696,150** |
+| Aspect | Benefit |
+|--------|---------|
+| **Budgeting** | Single line item, no variables |
+| **Accounting** | One invoice, complete cost |
+| **Risk** | Transferred to supplier |
+| **Logistics** | Zero effort required |
+| **Compliance** | Fully handled |
+| **Timeline** | Guaranteed delivery |

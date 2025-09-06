@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dubai Police SWAT Kit - System Architecture</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            padding: 40px;
+        }
+        
+        .system-overview {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .architecture-diagram {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .architecture-diagram h2 {
+            color: #495057;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        
+        .diagram-svg {
+            width: 100%;
+            height: 400px;
+        }
+        
+        .specifications {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .specifications h2 {
+            color: #495057;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        
+        .spec-list {
+            list-style: none;
+        }
+        
+        .spec-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .spec-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .spec-label {
+            font-weight: 600;
+            color: #6c757d;
+        }
+        
+        .spec-value {
+            color: #212529;
+        }
+        
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .component-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .component-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .component-image {
+            width: 100%;
+            height: 200px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .component-image img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+        }
+        
+        .component-details {
+            padding: 20px;
+        }
+        
+        .component-title {
+            font-size: 1.3em;
+            color: #212529;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .component-description {
+            color: #6c757d;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .component-specs {
+            list-style: none;
+            font-size: 0.9em;
+        }
+        
+        .component-specs li {
+            padding: 5px 0;
+            color: #495057;
+        }
+        
+        .component-specs li:before {
+            content: "✓ ";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        
+        .pricing-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .pricing-section h2 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+        
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .price-item {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .price-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+        
+        .price-value {
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background: #28a745;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+        
+        .warning-badge {
+            background: #ffc107;
+            color: #212529;
+        }
+        
+        footer {
+            background: #212529;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .system-overview {
+                grid-template-columns: 1fr;
+            }
+            
+            .components-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Dubai Police SWAT Kit</h1>
+            <div class="subtitle">Advanced Tactical Communication System</div>
+        </header>
+        
+        <div class="main-content">
+            <div class="system-overview">
+                <div class="architecture-diagram">
+                    <h2>System Architecture</h2>
+                    <svg class="diagram-svg" viewBox="0 0 600 400">
+                        <!-- Operator Head -->
+                        <rect x="250" y="20" width="100" height="60" fill="#667eea" rx="10"/>
+                        <text x="300" y="55" text-anchor="middle" fill="white" font-weight="bold">OPERATOR</text>
+                        
+                        <!-- V60 Control Unit -->
+                        <rect x="225" y="120" width="150" height="80" fill="#764ba2" rx="10"/>
+                        <text x="300" y="150" text-anchor="middle" fill="white" font-size="14">INVISIO V60 II</text>
+                        <text x="300" y="170" text-anchor="middle" fill="white" font-size="12">Control Unit</text>
+                        
+                        <!-- Left Ear - Tetra -->
+                        <rect x="100" y="240" width="120" height="60" fill="#28a745" rx="10"/>
+                        <text x="160" y="265" text-anchor="middle" fill="white" font-size="14">LEFT EAR</text>
+                        <text x="160" y="285" text-anchor="middle" fill="white" font-size="12">TETRA</text>
+                        
+                        <!-- Right Ear - Samsung -->
+                        <rect x="380" y="240" width="120" height="60" fill="#17a2b8" rx="10"/>
+                        <text x="440" y="265" text-anchor="middle" fill="white" font-size="14">RIGHT EAR</text>
+                        <text x="440" y="285" text-anchor="middle" fill="white" font-size="12">SAMSUNG</text>
+                        
+                        <!-- X7 Headset -->
+                        <rect x="225" y="330" width="150" height="50" fill="#6c757d" rx="10"/>
+                        <text x="300" y="360" text-anchor="middle" fill="white" font-size="14">X7 HEADSET</text>
+                        
+                        <!-- Connection Lines -->
+                        <line x1="300" y1="80" x2="300" y2="120" stroke="#333" stroke-width="2"/>
+                        <line x1="300" y1="200" x2="300" y2="240" stroke="#333" stroke-width="2"/>
+                        <line x1="300" y1="240" x2="160" y2="240" stroke="#333" stroke-width="2"/>
+                        <line x1="300" y1="240" x2="440" y2="240" stroke="#333" stroke-width="2"/>
+                        <line x1="300" y1="300" x2="300" y2="330" stroke="#333" stroke-width="2"/>
+                    </svg>
+                </div>
+                
+                <div class="specifications">
+                    <h2>System Specifications</h2>
+                    <ul class="spec-list">
+                        <li>
+                            <span class="spec-label">Protection Rating:</span>
+                            <span class="spec-value">IP68</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Temperature Range:</span>
+                            <span class="spec-value">-20°C to 60°C</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Humidity:</span>
+                            <span class="spec-value">Up to 95%</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Drop Test:</span>
+                            <span class="spec-value">2 meters</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">SNR Protection:</span>
+                            <span class="spec-value">39dB</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Battery Life:</span>
+                            <span class="spec-value">15+ hours</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Power Capacity:</span>
+                            <span class="spec-value">42,000mAh</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Connectivity:</span>
+                            <span class="spec-value">4G/5G + TETRA</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h2 style="text-align: center; margin-bottom: 30px; color: #495057;">Core Components</h2>
+            
+            <div class="components-grid">
+                <div class="component-card">
+                    <div class="component-image">
+                        <img src=".playwright-mcp/invisio-v60-ii-tan.png" alt="INVISIO V60 II">
+                    </div>
+                    <div class="component-details">
+                        <h3 class="component-title">INVISIO V60 II</h3>
+                        <p class="component-description">
+                            Advanced tri-com control unit designed as the ultimate tactical communication hub.
+                        </p>
+                        <ul class="component-specs">
+                            <li>3 COM ports</li>
+                            <li>4 PTT buttons</li>
+                            <li>Auto-sensing connectivity</li>
+                            <li>Submersible to 20m</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="component-card">
+                    <div class="component-image">
+                        <div style="padding: 40px; text-align: center;">
+                            <div style="background: #f8f9fa; padding: 20px; border-radius: 10px;">
+                                <h4 style="color: #6c757d;">INVISIO X7</h4>
+                                <p style="color: #6c757d; font-size: 0.9em;">In-Ear Headset</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="component-details">
+                        <h3 class="component-title">INVISIO X7 Headset</h3>
+                        <p class="component-description">
+                            Professional in-ear headset with superior hearing protection and crystal-clear audio.
+                        </p>
+                        <ul class="component-specs">
+                            <li>39dB SNR protection</li>
+                            <li>Hear-through technology</li>
+                            <li>360° situational awareness</li>
+                            <li>Ergonomic design</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="component-card">
+                    <div class="component-image">
+                        <img src=".playwright-mcp/bunker-samsung-case.png" alt="Samsung S25 with Bunker Case">
+                    </div>
+                    <div class="component-details">
+                        <h3 class="component-title">Samsung Galaxy S25 <span class="badge warning-badge">Pre-order</span></h3>
+                        <p class="component-description">
+                            Ruggedized smartphone with Bunker Supply tactical case for field operations.
+                        </p>
+                        <ul class="component-specs">
+                            <li>Bunker Supply Forge Case</li>
+                            <li>ATAK compatible</li>
+                            <li>Glove-compatible screen</li>
+                            <li>Quick-release mount</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="component-card">
+                    <div class="component-image">
+                        <div style="padding: 40px; text-align: center;">
+                            <div style="background: #212529; color: white; padding: 30px; border-radius: 10px;">
+                                <h4>42,000mAh</h4>
+                                <p style="font-size: 0.9em;">Power Bank</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="component-details">
+                        <h3 class="component-title">STAR-PAN Power System</h3>
+                        <p class="component-description">
+                            Military-grade hot-swappable power bank designed for extended operations.
+                        </p>
+                        <ul class="component-specs">
+                            <li>42,000mAh capacity</li>
+                            <li>Hot-swap capability</li>
+                            <li>USB-C PD output</li>
+                            <li>15+ hour operation</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="component-card">
+                    <div class="component-image">
+                        <div style="padding: 40px; text-align: center;">
+                            <div style="background: #ffc107; padding: 20px; border-radius: 10px;">
+                                <h4 style="color: #212529;">Dual PTT</h4>
+                                <p style="color: #495057; font-size: 0.9em;">Assembly</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="component-details">
+                        <h3 class="component-title">Dual PTT System</h3>
+                        <p class="component-description">
+                            Independent push-to-talk controls for simultaneous dual-channel communication.
+                        </p>
+                        <ul class="component-specs">
+                            <li>Left PTT: TETRA Command</li>
+                            <li>Right PTT: Samsung/ATAK</li>
+                            <li>Ergonomic placement</li>
+                            <li>Tactile feedback</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="component-card">
+                    <div class="component-image">
+                        <div style="padding: 40px; text-align: center;">
+                            <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 20px; border-radius: 10px;">
+                                <h4>Cable System</h4>
+                                <p style="font-size: 0.9em;">Interconnects</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="component-details">
+                        <h3 class="component-title">Tactical Cable Set</h3>
+                        <p class="component-description">
+                            Military-spec cable system for reliable field connectivity.
+                        </p>
+                        <ul class="component-specs">
+                            <li>TETRA 26-pin cable</li>
+                            <li>Samsung audio cable</li>
+                            <li>USB-C power cables</li>
+                            <li>Snag-free routing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pricing-section">
+                <h2>Pricing Structure</h2>
+                <div class="price-grid">
+                    <div class="price-item">
+                        <div class="price-label">Per Kit</div>
+                        <div class="price-value">AED 51,380</div>
+                    </div>
+                    <div class="price-item">
+                        <div class="price-label">6 Kits</div>
+                        <div class="price-value">AED 308,280</div>
+                    </div>
+                    <div class="price-item">
+                        <div class="price-label">8 Kits</div>
+                        <div class="price-value">AED 411,040</div>
+                    </div>
+                    <div class="price-item">
+                        <div class="price-label">10 Kits</div>
+                        <div class="price-value">AED 513,800</div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px; opacity: 0.9;">
+                    <p>✓ On-site Training (3 days) &nbsp;&nbsp; ✓ 1-Year Warranty &nbsp;&nbsp; ✓ Remote Support</p>
+                    <p style="margin-top: 10px; font-size: 0.9em;">Valid for 30 days • Subject to availability</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; 2025 Dubai Police SWAT Equipment Proposal</p>
+            <p style="font-size: 0.9em; opacity: 0.8; margin-top: 10px;">Confidential - Not for Distribution</p>
+        </footer>
+    </div>
+</body>
+</html>

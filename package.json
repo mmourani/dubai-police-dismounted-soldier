@@ -1,0 +1,29 @@
+{
+  "name": "dubai-police-dismounted-soldier",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "html_to_pdf_converter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "proposal:docx": "python3 ingested_data/meta/proposal_builder.py --format docx --out proposals/final.docx",
+    "proposal:pdf": "python3 ingested_data/meta/proposal_builder.py --format pdf --out proposals/final.pdf",
+    "proposal:all": "npm run proposal:docx && npm run proposal:pdf",
+    "mcp:build": "cd mcp-server && npm run build",
+    "mcp:run": "node mcp-server/dist/server.js",
+    "mcp:test:docx": "echo '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/call\",\"params\":{\"name\":\"generate_proposal\",\"arguments\":{\"format\":\"docx\",\"out\":\"proposals/final_via_mcp.docx\",\"force\":true}}}' | node mcp-server/dist/server.js",
+    "readiness:check": "python3 ingested_data/meta/readiness_analyzer.py status",
+    "readiness:analyze": "python3 ingested_data/meta/readiness_analyzer.py analyze",
+    "setup:proposals": "pip3 install --user --break-system-packages -r requirements-proposals.txt && npm --prefix mcp-server install && npm install",
+    "proposal:test": "python3 ingested_data/meta/proposal_builder.py --format md --out proposals/_sanity.md && test -s proposals/_sanity.md && echo '✅ Proposal system working'",
+    "proposal:docx:audit": "python3 ingested_data/meta/proposal_builder.py --format docx --out proposals/_audit.docx | python3 -m json.tool",
+    "mcp:smoke": "echo '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/list\"}' | node mcp-server/dist/server.js | grep -q generate_proposal && echo '✅ MCP server working'",
+    "mcp:ping": "echo '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/call\",\"params\":{\"name\":\"ping\",\"arguments\":{}}}' | node mcp-server/dist/server.js 2>/dev/null | grep -q 'ok' && echo '✅ MCP server healthy'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "puppeteer": "^24.17.0"
+  }
+}

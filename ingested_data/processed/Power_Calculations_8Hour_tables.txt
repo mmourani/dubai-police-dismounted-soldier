@@ -1,0 +1,40 @@
+| Component | Current (mA) | Duty Cycle | Average (mA) | Notes |
+|-----------|-------------|------------|--------------|-------|
+| Display (Max Bright) | 3,000 | 70% | 2,100 | Sunlight readable |
+| ATAK Application | 500 | 100% | 500 | Continuous operation |
+| GPS (High Accuracy) | 200 | 100% | 200 | 1m accuracy required |
+| 5G Data Active | 400 | 80% | 320 | Team coordination |
+| CPU (Tactical Apps) | 300 | 100% | 300 | Background processing |
+| WiFi/Bluetooth | 100 | 50% | 50 | Accessory connection |
+| Camera (Intermittent) | 500 | 5% | 25 | Photo documentation |
+| **TOTAL** | - | - | **3,495 mA** | @ 3.85V nominal |
+| Mode | Current (mA) | Duty Cycle | Average (mA) | Voltage |
+|------|-------------|------------|--------------|---------|
+| Transmit (1.8W) | 600 | 10% | 60 | 7.4V |
+| Receive | 150 | 85% | 127.5 | 7.4V |
+| Standby | 50 | 5% | 2.5 | 7.4V |
+| **TOTAL** | - | - | **190 mA** | @ 7.4V |
+| Component | Consumption (mAh @ 5V) |
+|-----------|------------------------|
+| Samsung Galaxy S25 | 21,489 |
+| INVISIO V60 II | 400 |
+| Accessories | 800 |
+| **Subtotal** | **22,689 mAh** |
+| Charge Rate | Current | Time (0-100%) | Time (0-80%) | Temperature |
+|------------|---------|---------------|--------------|-------------|
+| Standard (0.5C) | 10.5A | 2.5 hours | 2.0 hours | 25°C |
+| Fast (1C) | 21A | 1.3 hours | 1.0 hour | 25°C |
+| Standard (0.5C) | 10.5A | 3.0 hours | 2.4 hours | 50°C |
+| Emergency (2C) | 42A | 0.7 hours | 0.5 hours | 25°C only |
+| Cable | From | To | Power | Current |
+|-------|------|-----|-------|---------|
+| Cable 1 | Battery Pack | Samsung S25 | 45W | 3A @ 15V |
+| Cable 2 | Battery Pack | Accessories | 15W | 3A @ 5V |
+| Cable 3 | Samsung S25 | INVISIO V60 | 2.5W | 0.5A @ 5V |
+| Reserve | Battery Pack | Future | 10W | 2A @ 5V |
+| Chemistry | Energy Density | Temp Range | Cycle Life | Safety | Cost |
+|-----------|---------------|------------|------------|--------|------|
+| LiFePO4 | Medium | Excellent | Excellent | Excellent | Medium |
+| Li-ion (NMC) | High | Good | Good | Good | Low |
+| Li-polymer | High | Fair | Fair | Fair | Medium |
+| LiSOCl2 | Low | Excellent | Poor | Good | High |

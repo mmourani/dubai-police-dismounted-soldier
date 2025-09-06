@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/Users/user/Desktop/Dubai police dismounted soldier/Dubai_Police_Project/02_Technical/logs/.4ce999b5fe2e6d90df1f5a70143ca086ff2f840b-audit.json",
+    "files": [
+        {
+            "date": 1756883549020,
+            "name": "/Users/user/Desktop/Dubai police dismounted soldier/Dubai_Police_Project/02_Technical/logs/mcp-puppeteer-2025-09-03.log",
+            "hash": "714a4d17d8b16f5e0fb93870f12b0e2b66d92302c48c46fb9d55a9570f324cae"
+        }
+    ],
+    "hashType": "sha256"
+}

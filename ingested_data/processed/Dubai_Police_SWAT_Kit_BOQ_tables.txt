@@ -1,0 +1,61 @@
+| Item # | Component | Manufacturer | Model/Part Number | Qty per Kit | Unit | Total Qty (10 kits) | Notes |
+|--------|-----------|--------------|-------------------|-------------|------|---------------------|-------|
+| **1.0** | **CORE COMMUNICATION SYSTEM** |
+| 1.1 | Tactical Communications Hub | Silvus Technologies | StreamCaster NEXUS™ | 1 | EA | 10 | Integrated with SM5200 radio |
+| 1.2 | MANET Radio Module | Silvus Technologies | SM5200 (or SL5200) | 1 | EA | 10 | 2W native/4W effective output |
+| 1.3 | Mounting System | Silvus Technologies | 3-Point Snap Lock | 1 | SET | 10 | Chest-mount configuration |
+| **2.0** | **AUDIO SYSTEM** |
+| 2.1 | Control Unit | INVISIO | V60 II Tri-Com | 1 | EA | 10 | 3 COM ports, 4 PTT buttons |
+| 2.2 | Headset | INVISIO | X7 In-Ear System | 1 | SET | 10 | 39 dB SNR protection |
+| 2.3 | Backup Audio System | Silynx Communications | CLARUS XPR Dual PTT | 1 | SET | 10 | Alternative/backup option |
+| **3.0** | **END USER DEVICE** |
+| 3.1 | Smartphone | Samsung | Galaxy S25 | 1 | EA | 10 | Latest Android OS |
+| 3.2 | Rugged Case | SUPCASE | Unicorn Beetle Pro | 1 | EA | 10 | MIL-STD protection |
+| 3.3 | ATAK Software | USG/CIVTAK | Latest Version | 1 | LIC | 10 | Tactical awareness software |
+| **4.0** | **CABLES & INTERCONNECTS** |
+| 4.1 | Radio Cables | Glenair | STAR-PAN™ Compatible | 1 | SET | 10 | Custom configuration |
+| 4.2 | USB-C Cables | Glenair | Tactical Grade | 2 | EA | 20 | Ruggedized |
+| 4.3 | Audio Adapters | Glenair | Various | 1 | SET | 10 | As required |
+| **5.0** | **ANTENNA SYSTEM** |
+| 5.1 | MANET Antenna | TBD | TNC Connector Type | 2 | EA | 20 | Dual MIMO configuration |
+| 5.2 | Vest Mount System | DISCO32/Similar | VMAS | 1 | SET | 10 | Flexible discone design |
+| 5.3 | Antenna Cables | Glenair | Low-loss coax | 2 | EA | 20 | TNC connectors |
+| **6.0** | **TACTICAL PLATFORM** |
+| 6.1 | Plate Carrier Vest | TBD | MOLLE Compatible | 1 | EA | 10 | Tan/Black color options |
+| 6.2 | Pouches | Various | Radio/Equipment | 3 | EA | 30 | MOLLE attachment |
+| 6.3 | Cable Management | Various | Clips/Straps | 1 | SET | 10 | Snag-free routing |
+| **7.0** | **OPTIONAL EQUIPMENT** |
+| 7.1 | Helmet Camera | MOHOC | MOHOC 2 | 1 | EA | 10 | *Pending confirmation |
+| 7.2 | SD Card | SanDisk | 64GB Tactical | 1 | EA | 10 | For camera storage |
+| 7.3 | Wireless PTT | INVISIO | R30 Remote | 1 | EA | 10 | Bluetooth LE |
+| Item # | Component | Manufacturer | Model/Part Number | Qty per Kit | Unit | Total Qty (10 kits) | Notes |
+|--------|-----------|--------------|-------------------|-------------|------|---------------------|-------|
+| **1.0** | **CORE COMMUNICATION SYSTEM** |
+| 1.1 | Tactical Hub | Kagwerks | DOCK-Lite | 1 | EA | 10 | *S25 compatibility TBC |
+| 1.2 | MANET Radio | Silvus Technologies | SL5200 | 1 | EA | 10 | Separate unit |
+| 1.3 | Radio Mount | Custom | MOLLE Compatible | 1 | SET | 10 | Custom fabrication |
+| **2.0** | **AUDIO SYSTEM** |
+| 2.1 | Control Unit | INVISIO | V60 II ADP | 1 | EA | 10 | Audio/Data/Power hub |
+| 2.2 | Headset | INVISIO | X7 In-Ear System | 1 | SET | 10 | 39 dB SNR protection |
+| 2.3 | Alternative Audio | Silynx Communications | CLARUS System | 1 | SET | 10 | Dual PTT capability |
+| **3.0** | **END USER DEVICE** |
+| 3.1 | Smartphone | Samsung | Galaxy S25 | 1 | EA | 10 | Latest Android OS |
+| 3.2 | Mounting Solution | Custom | S25 Adapter | 1 | EA | 10 | Custom for DOCK-Lite |
+| 3.3 | Rugged Protection | Various | MIL-STD Case | 1 | EA | 10 | TBD based on mount |
+| 3.4 | ATAK Software | USG/CIVTAK | Latest Version | 1 | LIC | 10 | Tactical awareness |
+| **4.0** | **CABLES & INTERCONNECTS** |
+| 4.1 | Radio Interface | Glenair | Custom Cable Set | 1 | SET | 10 | SL5200 specific |
+| 4.2 | USB Hub Cables | Kagwerks/Glenair | USB-C Tactical | 3 | EA | 30 | 3-port hub cables |
+| 4.3 | Power Cables | Glenair | VBATT Compatible | 1 | SET | 10 | Power distribution |
+| **5.0** | **ANTENNA SYSTEM** |
+| 5.1 | MANET Antenna | TBD | TNC Dual MIMO | 2 | EA | 20 | Body-worn config |
+| 5.2 | Antenna Mount | VMAS/Similar | Vest Mount | 1 | SET | 10 | Low-profile |
+| 5.3 | RF Cables | Glenair | TNC-TNC | 2 | EA | 20 | Low-loss |
+| **6.0** | **TACTICAL PLATFORM** |
+| 6.1 | Plate Carrier | TBD | MOLLE System | 1 | EA | 10 | Mission-specific |
+| 6.2 | Equipment Pouches | Various | MOLLE Attach | 4 | EA | 40 | Various sizes |
+| 6.3 | Integration Kit | Custom | Mounting hardware | 1 | SET | 10 | Cables, clips, etc |
+| **7.0** | **OPTIONAL EQUIPMENT** |
+| 7.1 | Helmet Camera | MOHOC | Elite/MOHOC 2 | 1 | EA | 10 | *Pending confirmation |
+| 7.2 | ISW Module | Kagwerks | Wireless Module | 1 | EA | 10 | For peripherals |
+| 7.3 | Battery Pack | Various | USB-PD Power Bank | 1 | EA | 10 | Backup power |

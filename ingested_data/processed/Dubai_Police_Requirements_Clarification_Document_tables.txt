@@ -1,0 +1,13 @@
+| Component | Est. Cost per Kit (USD) |
+|-----------|-------------------------|
+| INVISIO System | $3,500 |
+| Samsung Device | $800-1,200 |
+| Bunker Supply Case | $200 |
+| Power System | $450 |
+| Cables & Connectors | $350 |
+| Mounting Hardware | $150 |
+| Integration & Testing | $200 |
+| **Subtotal** | **$5,650-6,050** |
+| Version | Date | Author | Changes |
+|---------|------|--------|---------|
+| 1.0 | Jan 27, 2025 | C4 Systems | Initial questionnaire |

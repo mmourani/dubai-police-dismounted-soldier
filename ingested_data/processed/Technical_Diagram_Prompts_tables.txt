@@ -1,0 +1,7 @@
+| Issue | Solution |
+|-------|----------|
+| Wrong component size | Include exact dimensions in mm |
+| Artistic style | Add "technical drawing" repeatedly |
+| Wrong mounting position | Specify "LEFT forearm" clearly |
+| Too many cables | State "exactly 4 cables visible" |
+| Face covered | Add "no helmet, clear face" |

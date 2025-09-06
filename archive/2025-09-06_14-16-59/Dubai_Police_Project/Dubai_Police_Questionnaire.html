@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dubai Police SWAT - Requirements Questionnaire</title>
+    <style>
+        @media print {
+            .page-break { page-break-after: always; }
+            body { margin: 0; }
+            .no-print { display: none; }
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #003366;
+            border-bottom: 3px solid #003366;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #003366;
+            background-color: #f0f0f0;
+            padding: 10px;
+            margin-top: 30px;
+        }
+        
+        h3 {
+            color: #666;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+        
+        .checkbox-group {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-left: 3px solid #003366;
+        }
+        
+        .checkbox-item {
+            margin: 8px 0;
+            padding-left: 20px;
+        }
+        
+        input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        
+        input[type="text"], input[type="number"], input[type="email"], input[type="tel"] {
+            border: none;
+            border-bottom: 1px solid #333;
+            padding: 2px 5px;
+            margin: 0 5px;
+            min-width: 100px;
+        }
+        
+        .fill-line {
+            display: inline-block;
+            border-bottom: 1px solid #333;
+            min-width: 200px;
+            margin: 0 5px;
+        }
+        
+        .notes-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ccc;
+            min-height: 100px;
+        }
+        
+        .important {
+            background-color: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 10px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #003366;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .signature-block {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .signature-field {
+            width: 45%;
+        }
+        
+        .signature-line {
+            border-bottom: 1px solid #333;
+            margin-top: 50px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>DUBAI POLICE SWAT - DUAL-CHANNEL COMMUNICATION SYSTEM</h1>
+        <h2 style="background-color: white; color: #003366;">Requirements Clarification Questionnaire</h2>
+        <p><strong>Date:</strong> January 27, 2025<br>
+        <strong>Project:</strong> Dismounted Soldier Communication Kit<br>
+        <strong>Document Version:</strong> 1.0</p>
+    </div>
+
+    <div class="important">
+        <strong>⚠️ IMPORTANT:</strong> Please complete all sections of this questionnaire to ensure accurate solution design and pricing. 
+        Your responses will directly impact the final system configuration and delivery timeline.
+    </div>
+
+    <h2>SECTION A: TETRA RADIO INTEGRATION</h2>
+    
+    <div class="checkbox-group">
+        <h3>Cassidian TH1n (Model: RC-36, Code: RA3789A)</h3>
+        
+        <div class="checkbox-item">
+            <input type="checkbox" id="a1"> <label for="a1">Confirm: Radio uses standard 26-pin accessory connector</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="a2"> <label for="a2">Confirm: Radio uses different connector (specify): <input type="text" style="width: 200px;"></label>
+        </div>
+        
+        <h4>Current Accessories in Use:</h4>
+        <div class="checkbox-item">
+            <input type="checkbox" id="a3"> <label for="a3">Speaker-microphone</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="a4"> <label for="a4">Earpiece system</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="a5"> <label for="a5">Other (specify): <input type="text" style="width: 300px;"></label>
+        </div>
+        
+        <h4>Security Requirements:</h4>
+        <div class="checkbox-item">
+            <input type="checkbox" id="a6"> <label for="a6">Must maintain end-to-end encryption</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="a7"> <label for="a7">Security restrictions on accessories apply</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="a8"> <label for="a8">No special security requirements</label>
+        </div>
+    </div>
+
+    <h2>SECTION B: AUDIO CONFIGURATION</h2>
+    
+    <div class="checkbox-group">
+        <h3>Channel Separation</h3>
+        <div class="checkbox-item">
+            <input type="checkbox" id="b1" checked> <label for="b1"><strong>CONFIRMED:</strong> Left ear = Tetra ONLY, Right ear = Samsung ONLY</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="b2"> <label for="b2">Need ability to mix audio when required</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="b3"> <label for="b3">Need ability to switch channels between ears</label>
+        </div>
+        
+        <h3>PTT (Push-To-Talk) Operation - SELECT ONE:</h3>
+        <div class="checkbox-item">
+            <input type="radio" name="ptt" id="b4"> <label for="b4">Single PTT transmits on BOTH channels simultaneously</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="radio" name="ptt" id="b5"> <label for="b5">Two separate PTT buttons (one for each channel)</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="radio" name="ptt" id="b6"> <label for="b6">Single PTT with selector switch (choose channel before transmitting)</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="radio" name="ptt" id="b7"> <label for="b7">Smart PTT (context-aware automatic selection)</label>
+        </div>
+        
+        <h3>Audio Priority</h3>
+        <div class="checkbox-item">
+            <input type="radio" name="priority" id="b8"> <label for="b8">Tetra audio overrides Samsung when both active</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="radio" name="priority" id="b9"> <label for="b9">Samsung overrides Tetra when both active</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="radio" name="priority" id="b10"> <label for="b10">No priority (both play simultaneously)</label>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>SECTION C: SAMSUNG DEVICE SELECTION</h2>
+    
+    <div class="checkbox-group">
+        <h3>Preferred Model - SELECT ONE:</h3>
+        <div class="checkbox-item">
+            <input type="radio" name="samsung" id="c1"> <label for="c1">Samsung Galaxy S23 (consumer + rugged case)</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="radio" name="samsung" id="c2"> <label for="c2">Samsung Galaxy S25 (when available + rugged case)</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="radio" name="samsung" id="c3"> <label for="c3">Samsung Galaxy XCover6 Pro (military-grade, removable battery)</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="radio" name="samsung" id="c4"> <label for="c4">Samsung Galaxy S23 Tactical Edition</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="radio" name="samsung" id="c5"> <label for="c5">No preference - vendor recommendation</label>
+        </div>
+        
+        <h3>Connectivity Requirements:</h3>
+        <div class="checkbox-item">
+            <input type="checkbox" id="c6"> <label for="c6">5G capability required</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="c7"> <label for="c7">4G LTE sufficient</label>
+        </div>
+        <div class="checkbox-item">
+            Storage requirement: <input type="number" style="width: 80px;" value="256"> GB
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="c8"> <label for="c8">Dual SIM required</label>
+        </div>
+    </div>
+
+    <h2>SECTION D: MOUNTING SOLUTIONS</h2>
+    
+    <div class="checkbox-group">
+        <h3>Samsung Phone Case - Bunker Supply Model:</h3>
+        <div class="checkbox-item">
+            <input type="radio" name="case" id="d1"> <label for="d1">BUNKER MOLLE (MOLLE attachment)</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="radio" name="case" id="d2"> <label for="d2">BUNKER TACTICAL (multiple mounting options)</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="radio" name="case" id="d3"> <label for="d3">BUNKER ARMOR (maximum protection)</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="radio" name="case" id="d4"> <label for="d4">Vendor recommendation based on requirements</label>
+        </div>
+        
+        <h3>Phone Mounting Position:</h3>
+        <div class="checkbox-item">
+            <input type="radio" name="mount" id="d5"> <label for="d5">Chest mount (center)</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="radio" name="mount" id="d6"> <label for="d6">Chest mount (offset left)</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="radio" name="mount" id="d7"> <label for="d7">Chest mount (offset right)</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="radio" name="mount" id="d8"> <label for="d8">Arm mount</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="radio" name="mount" id="d9"> <label for="d9">Belt mount</label>
+        </div>
+        
+        <h3>Mounting Requirements:</h3>
+        <div class="checkbox-item">
+            <input type="checkbox" id="d10"> <label for="d10">Quick-release capability required</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="d11"> <label for="d11">Must operate phone while mounted</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="d12"> <label for="d12">Must view screen while mounted</label>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>SECTION E: POWER SYSTEM</h2>
+    
+    <div class="checkbox-group">
+        <h3>Operational Duration Requirements:</h3>
+        <table>
+            <tr>
+                <td>Minimum operation time:</td>
+                <td><input type="number" min="1" max="24" value="8"> hours</td>
+            </tr>
+            <tr>
+                <td>Typical mission duration:</td>
+                <td><input type="number" min="1" max="24" value="12"> hours</td>
+            </tr>
+            <tr>
+                <td>Maximum operation needed:</td>
+                <td><input type="number" min="1" max="24" value="15"> hours</td>
+            </tr>
+            <tr>
+                <td>Standby time requirement:</td>
+                <td><input type="number" min="1" max="72"> hours</td>
+            </tr>
+        </table>
+        
+        <h3>Power Requirements - What needs central power:</h3>
+        <div class="checkbox-item">
+            <input type="checkbox" id="e1" checked> <label for="e1">Samsung phone</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="e2" checked> <label for="e2">INVISIO control unit</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="e3"> <label for="e3">Tetra radio (or uses own battery?)</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="e4"> <label for="e4">Camera system</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="e5"> <label for="e5">Other: <input type="text" style="width: 300px;"></label>
+        </div>
+        
+        <h3>Power Bank Specifications:</h3>
+        <div class="checkbox-item">
+            Maximum acceptable weight: <input type="number" style="width: 100px;"> grams
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="e6"> <label for="e6">Hot-swappable batteries required</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="e7"> <label for="e7">Battery level indicators required</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="e8"> <label for="e8">Vehicle charging capability needed</label>
+        </div>
+    </div>
+
+    <h2>SECTION F: ENVIRONMENTAL & DURABILITY</h2>
+    
+    <div class="checkbox-group">
+        <h3>Operating Environment:</h3>
+        <table>
+            <tr>
+                <td>Temperature range:</td>
+                <td><input type="number" value="-20" style="width: 60px;">°C to <input type="number" value="50" style="width: 60px;">°C</td>
+            </tr>
+            <tr>
+                <td>Humidity:</td>
+                <td>Up to <input type="number" value="95" style="width: 60px;">%</td>
+            </tr>
+            <tr>
+                <td>Water/Dust Protection:</td>
+                <td>IP<input type="number" value="68" style="width: 50px;"> rating required</td>
+            </tr>
+            <tr>
+                <td>Water immersion depth:</td>
+                <td><input type="number" value="1" style="width: 60px;"> meters</td>
+            </tr>
+            <tr>
+                <td>Drop test height:</td>
+                <td><input type="number" value="2" style="width: 60px;"> meters</td>
+            </tr>
+        </table>
+        
+        <h3>Operational Environments:</h3>
+        <div class="checkbox-item">
+            <input type="checkbox" id="f1" checked> <label for="f1">Urban operations</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="f2" checked> <label for="f2">Desert operations</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="f3"> <label for="f3">Maritime/coastal operations</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="f4"> <label for="f4">Vehicle-mounted operations</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="f5"> <label for="f5">Aircraft (helicopter) operations</label>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>SECTION G: SOFTWARE REQUIREMENTS</h2>
+    
+    <div class="checkbox-group">
+        <h3>ATAK Configuration:</h3>
+        <div class="checkbox-item">
+            <input type="radio" name="atak" id="g1"> <label for="g1">CivTAK (Civilian version)</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="radio" name="atak" id="g2"> <label for="g2">GovTAK (Government version)</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="radio" name="atak" id="g3"> <label for="g3">MilTAK (Military version)</label>
+        </div>
+        
+        <div class="checkbox-item">
+            Specific plugins required: <input type="text" style="width: 400px;">
+        </div>
+        
+        <h3>VoIP Application - SELECT ALL THAT APPLY:</h3>
+        <div class="checkbox-item">
+            <input type="checkbox" id="g4"> <label for="g4">Zello</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="g5"> <label for="g5">Signal</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="g6"> <label for="g6">WhatsApp</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="g7"> <label for="g7">Microsoft Teams</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="g8"> <label for="g8">Other: <input type="text" style="width: 300px;"></label>
+        </div>
+    </div>
+
+    <h2>SECTION H: QUANTITY & DELIVERY</h2>
+    
+    <div class="checkbox-group">
+        <table>
+            <tr>
+                <td>Initial order quantity:</td>
+                <td><input type="number" min="1" style="width: 100px;"> kits</td>
+            </tr>
+            <tr>
+                <td>Total future requirement:</td>
+                <td><input type="number" min="1" style="width: 100px;"> kits</td>
+            </tr>
+            <tr>
+                <td>Required delivery date:</td>
+                <td><input type="date"></td>
+            </tr>
+        </table>
+        
+        <h3>Delivery Options:</h3>
+        <div class="checkbox-item">
+            <input type="radio" name="delivery" id="h1"> <label for="h1">All units delivered at once</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="radio" name="delivery" id="h2"> <label for="h2">Phased delivery (specify phases below)</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="h3"> <label for="h3">4-week timeline is flexible (can extend if needed)</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="h4"> <label for="h4">Core components first, accessories later is acceptable</label>
+        </div>
+    </div>
+
+    <h2>SECTION I: TRAINING & SUPPORT</h2>
+    
+    <div class="checkbox-group">
+        <h3>Training Requirements:</h3>
+        <table>
+            <tr>
+                <td>Number of operators to train:</td>
+                <td><input type="number" style="width: 100px;"> personnel</td>
+            </tr>
+            <tr>
+                <td>Number of trainers to train:</td>
+                <td><input type="number" style="width: 100px;"> personnel</td>
+            </tr>
+            <tr>
+                <td>Training language:</td>
+                <td>
+                    <input type="checkbox" id="i1"> English
+                    <input type="checkbox" id="i2"> Arabic
+                </td>
+            </tr>
+        </table>
+        
+        <h3>Support & Warranty:</h3>
+        <div class="checkbox-item">
+            <input type="radio" name="warranty" id="i3"> <label for="i3">1-year standard warranty only</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="radio" name="warranty" id="i4"> <label for="i4">1-year + 2-year extended (3 years total)</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="radio" name="warranty" id="i5"> <label for="i5">1-year + 4-year extended (5 years total)</label>
+        </div>
+        
+        <h3>Support Level Required:</h3>
+        <div class="checkbox-item">
+            <input type="checkbox" id="i6"> <label for="i6">24/7 support needed</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="i7"> <label for="i7">On-site support required</label>
+        </div>
+        <div class="checkbox-item">
+            Response time requirement: <input type="number" style="width: 60px;"> hours
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>SECTION J: BUDGET INFORMATION</h2>
+    
+    <div class="checkbox-group">
+        <table>
+            <tr>
+                <td>Budget per kit:</td>
+                <td>USD $ <input type="number" style="width: 150px;"> to $ <input type="number" style="width: 150px;"></td>
+            </tr>
+            <tr>
+                <td>Total project budget:</td>
+                <td>USD $ <input type="number" style="width: 200px;"></td>
+            </tr>
+            <tr>
+                <td>Payment terms:</td>
+                <td>
+                    <input type="radio" name="payment" id="j1"> <label for="j1">Net 30</label>
+                    <input type="radio" name="payment" id="j2"> <label for="j2">Net 60</label>
+                    <input type="radio" name="payment" id="j3"> <label for="j3">Net 90</label>
+                </td>
+            </tr>
+        </table>
+        
+        <div class="checkbox-item">
+            <input type="checkbox" id="j4"> <label for="j4">Letter of Credit required</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="j5"> <label for="j5">Performance bond required</label>
+        </div>
+    </div>
+
+    <h2>SECTION K: ADDITIONAL REQUIREMENTS</h2>
+    
+    <div class="notes-section">
+        <p><em>Please provide any additional requirements, constraints, or specifications not covered above:</em></p>
+        <br><br><br><br><br>
+    </div>
+
+    <h2>SECTION L: CONTACT INFORMATION</h2>
+    
+    <div class="checkbox-group">
+        <h3>Primary Contact (Dubai Police):</h3>
+        <table style="border: none;">
+            <tr>
+                <td style="border: none;">Name:</td>
+                <td style="border: none;"><input type="text" style="width: 300px;"></td>
+            </tr>
+            <tr>
+                <td style="border: none;">Title:</td>
+                <td style="border: none;"><input type="text" style="width: 300px;"></td>
+            </tr>
+            <tr>
+                <td style="border: none;">Phone:</td>
+                <td style="border: none;"><input type="tel" style="width: 300px;"></td>
+            </tr>
+            <tr>
+                <td style="border: none;">Email:</td>
+                <td style="border: none;"><input type="email" style="width: 300px;"></td>
+            </tr>
+        </table>
+        
+        <h3>Technical Contact:</h3>
+        <table style="border: none;">
+            <tr>
+                <td style="border: none;">Name:</td>
+                <td style="border: none;"><input type="text" style="width: 300px;"></td>
+            </tr>
+            <tr>
+                <td style="border: none;">Phone:</td>
+                <td style="border: none;"><input type="tel" style="width: 300px;"></td>
+            </tr>
+            <tr>
+                <td style="border: none;">Email:</td>
+                <td style="border: none;"><input type="email" style="width: 300px;"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="signature-block">
+        <div class="signature-field">
+            <div class="signature-line"></div>
+            <p>Authorized Signature<br>
+            Dubai Police</p>
+            <p>Date: _____________________</p>
+        </div>
+        <div class="signature-field">
+            <div class="signature-line"></div>
+            <p>Name & Title<br>
+            Dubai Police</p>
+            <p>Official Stamp</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><strong>Please return completed questionnaire to:</strong><br>
+        Email: [Your email address]<br>
+        Phone: [Your phone number]<br>
+        <br>
+        <strong>Document Reference:</strong> DP-SWAT-REQ-2025-001<br>
+        <strong>Classification:</strong> Confidential - Not for Distribution</p>
+    </div>
+</body>
+</html>

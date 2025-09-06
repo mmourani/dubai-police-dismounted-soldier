@@ -1,0 +1,55 @@
+| Cable ID | Function | Length | Connectors | Shielding | Temp Rating |
+|----------|----------|---------|------------|-----------|-------------|
+| CBL-001 | Tetra-INVISIO | 60cm | 26-pin to 6-pin | Dual | -40°C to +85°C |
+| CBL-002 | Samsung-INVISIO | 50cm | USB-C to 6-pin | Single | -40°C to +85°C |
+| CBL-003 | Power Primary | 80cm | USB-C to USB-C | None* | -40°C to +85°C |
+| CBL-004 | Power Secondary | 40cm | USB-C to USB-C | None* | -40°C to +85°C |
+| Pin | Function | Wire Color | AWG |
+|-----|----------|------------|-----|
+| 1 | Audio Out + | White | 24 |
+| 2 | Audio Out - | White/Black | 24 |
+| 3 | Audio In + | Red | 24 |
+| 4 | Audio In - | Red/Black | 24 |
+| 5 | PTT Signal | Yellow | 26 |
+| 6 | PTT Ground | Yellow/Black | 26 |
+| 7 | Power + (if required) | Orange | 22 |
+| 8 | Power Ground | Black | 22 |
+| 9-26 | Reserved/NC | - | - |
+| Pin | Function | Wire Color |
+|-----|----------|------------|
+| 1 | Audio Left | White |
+| 2 | Audio Right | Red |
+| 3 | Audio Ground | Black |
+| 4 | PTT | Yellow |
+| 5 | Power (if used) | Orange |
+| 6 | Data/Reserved | Green |
+| USB-C Pin | Function | Usage |
+|-----------|----------|-------|
+| A1, B12 | GND | Ground |
+| A4, B9 | VBUS | Power (5V) |
+| A5 | CC1 | Configuration |
+| B5 | CC2 | Configuration |
+| A6 | D+ | USB 2.0 Data |
+| A7 | D- | USB 2.0 Data |
+| B6 | D+ | USB 2.0 Data |
+| B7 | D- | USB 2.0 Data |
+| A8 | SBU1 | Audio Left |
+| B8 | SBU2 | Audio Right |
+| Cable Type | Primary Color | Stripe/Band |
+|------------|--------------|-------------|
+| Audio/Data | Tan/Coyote | None |
+| Power Primary | Black | Orange band |
+| Power Secondary | Black | Yellow band |
+| Spare/Future | Black | Green band |
+| Cable Type | Quantity | Percentage |
+|------------|----------|------------|
+| Tetra-INVISIO | 2 | 20% |
+| Samsung-INVISIO | 2 | 20% |
+| Power Primary | 3 | 30% |
+| Power Secondary | 2 | 20% |
+| Connector caps | 20 | 200% |
+| Cable Type | Prototype | Production |
+|------------|-----------|------------|
+| Standard USB-C | 1 week | 2-3 weeks |
+| Custom Tactical | 3-4 weeks | 6-8 weeks |
+| MIL-SPEC Assembly | 4-6 weeks | 8-10 weeks |

@@ -1,0 +1,48 @@
+| Quantity | Total Investment (AED) |
+|----------|----------------------|
+| 6 Kits | **385,200** |
+| 8 Kits | **513,600** |
+| 10 Kits | **642,000** |
+| Component | Specification | Purpose |
+|-----------|--------------|---------|
+| **INVISIO V60 II** | Tactical control unit with 4 PTT buttons | Multi-channel audio management |
+| **INVISIO X7** | In-ear headset, 39dB noise reduction | Clear communication in extreme noise |
+| **Samsung Galaxy S25 Ultra** | 512GB, 5G enabled | Data device for ATAK |
+| **Bunker MAAK Case** | MIL-STD-810H tactical case | Device protection & mounting |
+| **Power System** | Dual 21,000mAh hot-swappable | 8-hour continuous operation |
+| **Cable System** | 4× MIL-SPEC tactical cables | System interconnection |
+| **Mounting Hardware** | Forearm & vest integration | Ergonomic positioning |
+| Category | Components | Price (AED) |
+|----------|-----------|------------|
+| **Audio System** | INVISIO V60 II control unit + X7 headset | 27,900 |
+| **End User Device** | Samsung S23 Ultra + Bunker case | 8,900 |
+| **Power System** | Dual batteries + controller + charger | 10,850 |
+| **Cables & Connectors** | 4× tactical cables + management | 5,400 |
+| **Integration** | Mounting hardware + pouches | 2,800 |
+| **Services** | Assembly, testing, certification | 6,250 |
+| **Documentation** | Manuals and quick reference guides | 800 |
+| **TOTAL PER KIT** | **Delivered to Dubai Police** | **62,900** |
+| Quantity | Unit Price (AED) | Total (AED) |
+|----------|-----------------|-------------|
+| 6 Kits | 62,900 | **377,400** |
+| 8 Kits | 62,900 | **503,200** |
+| 10 Kits | 62,900 | **629,000** |
+| Quantity | Spare Parts Investment (AED) |
+|----------|----------------------------|
+| For 6 Kits | 77,000 |
+| For 8 Kits | 103,000 |
+| For 10 Kits | 128,000 |
+| Milestone | Percentage | 10 Kits Example (AED) |
+|-----------|------------|--------------------|
+| Contract Signing | 30% | 192,600 |
+| Shipment Departure | 40% | 256,800 |
+| Delivery & Acceptance | 30% | 192,600 |
+| **Total** | 100% | **642,000** |
+| Aspect | Benefit |
+|--------|---------|
+| **Budgeting** | Single line item, no variables |
+| **Accounting** | One invoice, complete cost |
+| **Risk** | Transferred to supplier |
+| **Logistics** | Zero effort required |
+| **Compliance** | Fully handled |
+| **Timeline** | Guaranteed delivery |

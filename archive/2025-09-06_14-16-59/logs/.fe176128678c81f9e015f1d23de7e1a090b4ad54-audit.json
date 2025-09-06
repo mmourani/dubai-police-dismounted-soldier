@@ -1,0 +1,50 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/Users/user/Desktop/Dubai police dismounted soldier/logs/.fe176128678c81f9e015f1d23de7e1a090b4ad54-audit.json",
+    "files": [
+        {
+            "date": 1756214092795,
+            "name": "/Users/user/Desktop/Dubai police dismounted soldier/logs/mcp-puppeteer-2025-08-26.log",
+            "hash": "d120a7fc8946dd08596d4d55bd9f6cd517bb53755ce433fcb570dea645bd5a18"
+        },
+        {
+            "date": 1756360840274,
+            "name": "/Users/user/Desktop/Dubai police dismounted soldier/logs/mcp-puppeteer-2025-08-28.log",
+            "hash": "bf355affd2f26976541a6f59b6bf2303bba28b55f2912fa09a82dac59fbc397c"
+        },
+        {
+            "date": 1756456681246,
+            "name": "/Users/user/Desktop/Dubai police dismounted soldier/logs/mcp-puppeteer-2025-08-29.log",
+            "hash": "0c1fe17847c0b372088afd1810573c876c616efe6a42b04cd88efbe52ec3a69a"
+        },
+        {
+            "date": 1756699591140,
+            "name": "/Users/user/Desktop/Dubai police dismounted soldier/logs/mcp-puppeteer-2025-09-01.log",
+            "hash": "273ba51fbf62e8686604b6df38372d7cafdf8ac436310dcd61e2f5106b34dd98"
+        },
+        {
+            "date": 1756830837373,
+            "name": "/Users/user/Desktop/Dubai police dismounted soldier/logs/mcp-puppeteer-2025-09-02.log",
+            "hash": "02652a5e7ce4614c39c90e0e784652d132bf7a195e050c87762f127f9f5b452e"
+        },
+        {
+            "date": 1756883441064,
+            "name": "/Users/user/Desktop/Dubai police dismounted soldier/logs/mcp-puppeteer-2025-09-03.log",
+            "hash": "464b8ec2b86a9dffb9f87ad970924dd71c5ee46ab3591e6e4ddcb6de778ff5fe"
+        },
+        {
+            "date": 1757078824416,
+            "name": "/Users/user/Desktop/Dubai police dismounted soldier/logs/mcp-puppeteer-2025-09-05.log",
+            "hash": "1ac6a605abba686952688d7a4a49a3c74e4f11b8092025862020df2111c7c8d8"
+        },
+        {
+            "date": 1757151479063,
+            "name": "/Users/user/Desktop/Dubai police dismounted soldier/logs/mcp-puppeteer-2025-09-06.log",
+            "hash": "7be0995dda4f73ddefe53e2993d9a584dd6b8172e3092b307c342ebf04ca587d"
+        }
+    ],
+    "hashType": "sha256"
+}

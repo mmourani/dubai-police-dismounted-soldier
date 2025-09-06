@@ -1,0 +1,144 @@
+name: proposal-ci
+on: [push, pull_request]
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # upgraded from read — needed to commit/push archive changes
+
+    env:
+      # Use Puppeteer's bundled Chromium (most reliable on GH runners)
+      PUPPETEER_EXECUTABLE_PATH: ""
+      # Optional: speed up npm installs
+      NODE_ENV: production
+
+    steps:
+      - name: Checkout (with LFS)
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: requirements-proposals.txt
+
+      - name: Install Node deps (root)
+        run: npm ci
+
+      - name: Install Node deps (mcp-server) & build
+        run: |
+          cd mcp-server
+          npm ci
+          npm run build
+
+      - name: Install Python deps
+        run: |
+          pip3 install -r requirements-proposals.txt
+
+      - name: Readiness check
+        run: npm run readiness:check
+
+      - name: Proposal sanity (MD)
+        run: npm run proposal:test
+
+      - name: MCP smoke
+        run: npm run mcp:smoke
+
+      - name: MCP ping
+        run: npm run mcp:ping
+
+      # Optional: prove PDF + DOCX render (uploads artifacts)
+      - name: Generate PDF & DOCX (audit)
+        run: |
+          python3 ingested_data/meta/proposal_builder.py --format pdf  --out proposals/ci_test.pdf
+          python3 ingested_data/meta/proposal_builder.py --format docx --out proposals/ci_test.docx
+          ls -lh proposals | sed -n '1,200p'
+
+      # Enforce 95% confidence on main branch (no forced drafts)
+      - name: Enforce 95% confidence on main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          echo "### Enforcing 95% confidence for main branch"
+          python3 ingested_data/meta/proposal_builder.py --format md --out proposals/confidence_check.md
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: proposals-${{ github.run_id }}
+          path: |
+            proposals/*.pdf
+            proposals/*.docx
+          retention-days: 14
+
+      - name: Auto-archive legacy root (versioned)
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: |
+          set -euo pipefail
+
+          # 1) Determine VERSION from newest folder under releases/, else date tag
+          if ls -1d releases/* >/dev/null 2>&1; then
+            VERSION="$(ls -1dt releases/* | head -n1 | xargs -n1 basename)"
+          else
+            VERSION="v$(date +%Y-%m-%d_%H-%M-%S)"
+          fi
+
+          ARCH="archive/${VERSION}"
+          mkdir -p "$ARCH"
+
+          echo "Archiving legacy root content to: $ARCH"
+
+          # 2) Keep-list (what stays at repo root)
+          KEEP=(
+            ".git" ".github" ".gitattributes" ".gitignore"
+            "mcp-server" "ingested_data" "proposals" "releases" "templates"
+            "package.json" "package-lock.json" "requirements-proposals.txt"
+            "PROPOSAL_SYSTEM.md" "README.md" "README_FIRST.md"
+            "html_to_pdf_converter.js"
+            "node_modules" ".claude" "archive"
+          )
+          KEEP_SET=" ${KEEP[*]} "
+
+          # 3) Move everything else into archive/$VERSION (prefer git mv)
+          shopt -s dotglob nullglob
+          MOVED=0
+          for item in * .*; do
+            [[ "$item" == "." || "$item" == ".." ]] && continue
+            # skip keep-list
+            if [[ " $KEEP_SET " == *" $item "* ]]; then
+              continue
+            fi
+            # use git mv if tracked, otherwise plain mv
+            if git ls-files --error-unmatch -- "$item" >/dev/null 2>&1; then
+              git mv -k "$item" "$ARCH/" || mv "$item" "$ARCH/"
+            else
+              mv "$item" "$ARCH/"
+            fi
+            MOVED=$((MOVED+1))
+          done
+          shopt -u dotglob nullglob
+
+          if [[ $MOVED -eq 0 ]]; then
+            echo "Nothing to archive for $VERSION;"
+            exit 0
+          fi
+
+          echo "Archived $MOVED item(s) into $ARCH:"
+          ls -la "$ARCH" | sed -n '1,200p'
+
+          # 4) Commit & push the archive (preserving history via git mv)
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore(archive): auto-archive legacy root → archive/${VERSION}"
+          git push

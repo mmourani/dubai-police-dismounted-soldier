@@ -1,0 +1,6 @@
+{
+  "enabledMcpjsonServers": [
+    "doc-foundry"
+  ],
+  "enableAllProjectMcpServers": true
+}

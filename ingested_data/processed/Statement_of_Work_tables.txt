@@ -1,0 +1,16 @@
+| Phase | Duration | Deliverable |
+|-------|----------|------------|
+| **Week 1-2** | Procurement | Component orders placed |
+| **Week 3** | Integration | Systems assembled |
+| **Week 4** | Testing | FAT completed |
+| **Week 5** | Shipping | Systems delivered to Dubai |
+| **Week 6** | Installation | SAT completed |
+| **Week 7** | Training | Operators certified |
+| **Week 8** | Deployment | UAT commenced |
+| Milestone | Completion Criteria | Payment |
+|-----------|-------------------|---------|
+| Contract Signature | SOW signed | 30% |
+| FAT Completion | FAT passed | 30% |
+| Delivery | Systems in Dubai | 20% |
+| SAT Completion | SAT passed | 10% |
+| Final Acceptance | UAT passed | 10% |

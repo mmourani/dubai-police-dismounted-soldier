@@ -1,0 +1,41 @@
+| Quantity | Total Investment (AED) |
+|----------|----------------------|
+| 6 Kits | **337,770** |
+| 8 Kits | **450,360** |
+| 10 Kits | **562,950** |
+| Component | Specification | Purpose |
+|-----------|--------------|---------|
+| **INVISIO V60 II** | Tactical control unit with 4 PTT buttons | Multi-channel audio management |
+| **INVISIO X7** | In-ear headset, 39dB noise reduction | Clear communication in extreme noise |
+| **Samsung Galaxy S23 Ultra** | 512GB, 5G enabled | ATAK platform & data device |
+| **Bunker MAAK Case** | MIL-STD-810H tactical case | Device protection & mounting |
+| **Power System** | Dual 21,000mAh hot-swappable | 8-hour continuous operation |
+| **Cable System** | 4× MIL-SPEC tactical cables | System interconnection |
+| **Mounting Hardware** | Forearm & vest integration | Ergonomic positioning |
+| Category | Components | Price (AED) |
+|----------|-----------|------------|
+| **Audio System** | INVISIO V60 II control unit + X7 headset | 23,200 |
+| **End User Device** | Samsung S23 Ultra + Bunker case | 8,265 |
+| **Power System** | Dual batteries + controller + charger | 8,555 |
+| **Cables & Connectors** | 4× tactical cables + management | 4,350 |
+| **Integration** | Mounting hardware + pouches | 2,175 |
+| **Services** | Assembly, testing, certification | 6,525 |
+| **Packaging** | Tactical case + documentation | 615 |
+| **TOTAL PER KIT** | | **53,685** |
+| Quantity | Unit Price (AED) | Total (AED) |
+|----------|-----------------|-------------|
+| 6 Kits | 53,685 | **337,770** |
+| 8 Kits | 53,685 | **450,360** |
+| 10 Kits | 53,685 | **562,950** |
+| Quantity | Spare Parts Investment (AED) |
+|----------|----------------------------|
+| For 6 Kits | 64,422 |
+| For 8 Kits | 85,896 |
+| For 10 Kits | 107,370 |
+| Area | Mitigation Strategy |
+|------|-------------------|
+| **Desert Operations** | All components rated for 50°C+ operation |
+| **System Reliability** | Redundant power, proven components |
+| **Maintenance** | Modular design for easy replacement |
+| **Training** | Comprehensive 5-day program available |
+| **Support** | Local presence through partners |

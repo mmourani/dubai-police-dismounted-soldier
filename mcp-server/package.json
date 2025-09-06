@@ -1,0 +1,25 @@
+{
+  "name": "doc-foundry-mcp-server",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "MCP server for Dubai Police readiness analyzer and doc-foundry tools",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/server.js",
+    "start:dev": "npm run build && node dist/server.js",
+    "clean": "rm -rf dist",
+    "test:tools": "echo '{\"method\":\"tools/list\",\"id\":\"1\",\"jsonrpc\":\"2.0\"}' | node dist/server.js",
+    "test:analyze": "echo '{\"method\":\"tools/call\",\"id\":\"2\",\"jsonrpc\":\"2.0\",\"params\":{\"name\":\"readiness_analyze\",\"arguments\":{}}}' | node dist/server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "@types/node": "^20.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

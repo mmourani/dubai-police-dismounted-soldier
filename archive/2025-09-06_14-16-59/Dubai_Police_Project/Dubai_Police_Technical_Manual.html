@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dubai Police SWAT - Technical Communication System Manual</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+            color: #e5e5e5;
+            overflow-x: hidden;
+        }
+        
+        /* Technical Grid Background */
+        .tech-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(30, 58, 95, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(30, 58, 95, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1920px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                #4A5F42 20%, 
+                #1E3A5F 50%, 
+                #FF6B35 80%, 
+                transparent);
+            animation: scan 3s linear infinite;
+        }
+        
+        @keyframes scan {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            color: #888;
+            font-size: 1.1em;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+        
+        .nav-tab {
+            padding: 12px 24px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            color: #888;
+        }
+        
+        .nav-tab:hover {
+            background: #252525;
+            color: #fff;
+        }
+        
+        .nav-tab.active {
+            background: #2d2d2d;
+            border-bottom: 2px solid #4A5F42;
+            color: #fff;
+        }
+        
+        /* Content Sections */
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Technical Diagram Container */
+        .diagram-container {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .diagram-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            background: #4A5F42;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        /* SVG Styles */
+        .technical-svg {
+            width: 100%;
+            height: auto;
+            background: #0f0f0f;
+            border-radius: 4px;
+        }
+        
+        .component-box {
+            fill: #1a1a1a;
+            stroke: #4A5F42;
+            stroke-width: 1;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .component-box:hover {
+            fill: #252525;
+            stroke: #6B8E5C;
+            stroke-width: 2;
+        }
+        
+        .cable-path {
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-dasharray: 5, 5;
+            animation: dash 20s linear infinite;
+        }
+        
+        @keyframes dash {
+            to { stroke-dashoffset: -100; }
+        }
+        
+        .cable-tetra { stroke: #4A5F42; }
+        .cable-samsung { stroke: #1E3A5F; }
+        .cable-power { stroke: #FF6B35; }
+        .cable-data { stroke: #6B5B95; }
+        
+        /* Component Cards */
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .component-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .component-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-color: #4A5F42;
+        }
+        
+        .component-header {
+            padding: 15px;
+            background: #252525;
+            border-bottom: 1px solid #333;
+        }
+        
+        .component-name {
+            font-weight: 600;
+            font-size: 1.1em;
+            color: #fff;
+        }
+        
+        .component-body {
+            padding: 20px;
+        }
+        
+        .spec-table {
+            width: 100%;
+            font-size: 0.9em;
+        }
+        
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        
+        .spec-row:last-child {
+            border-bottom: none;
+        }
+        
+        .spec-label {
+            color: #888;
+            font-weight: 500;
+        }
+        
+        .spec-value {
+            color: #e5e5e5;
+            font-family: 'Courier New', monospace;
+        }
+        
+        /* Interactive Elements */
+        .tooltip {
+            position: absolute;
+            background: #2d2d2d;
+            border: 1px solid #4A5F42;
+            border-radius: 4px;
+            padding: 10px;
+            font-size: 0.9em;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .tooltip.show {
+            opacity: 1;
+        }
+        
+        /* Body Diagram Container */
+        .body-diagram {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 40px;
+            background: #0f0f0f;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .operator-view {
+            text-align: center;
+        }
+        
+        .view-label {
+            color: #888;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 20px;
+        }
+        
+        /* Connection Matrix */
+        .matrix-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        .connection-matrix {
+            width: 100%;
+            min-width: 800px;
+            border-collapse: collapse;
+            background: #0f0f0f;
+        }
+        
+        .connection-matrix th {
+            background: #252525;
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #333;
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        .connection-matrix td {
+            padding: 10px;
+            border: 1px solid #333;
+            color: #e5e5e5;
+        }
+        
+        .connection-matrix tr:hover {
+            background: #1a1a1a;
+        }
+        
+        /* Status Badges */
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .status-active {
+            background: #4A5F42;
+            color: #fff;
+        }
+        
+        .status-standby {
+            background: #FFB84D;
+            color: #1a1a1a;
+        }
+        
+        .status-offline {
+            background: #FF4444;
+            color: #fff;
+        }
+        
+        /* Footer */
+        footer {
+            margin-top: 60px;
+            padding: 30px;
+            background: #1a1a1a;
+            border-top: 1px solid #333;
+            text-align: center;
+            color: #888;
+        }
+        
+        .classification {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #FF6B35;
+            color: #fff;
+            font-weight: 600;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tech-grid"></div>
+    
+    <div class="container">
+        <header>
+            <h1>DUBAI POLICE SWAT COMMUNICATION SYSTEM</h1>
+            <div class="subtitle">Technical Integration Manual - Tactical Communication Kit</div>
+        </header>
+        
+        <div class="nav-tabs">
+            <div class="nav-tab active" onclick="showSection('system')">System Architecture</div>
+            <div class="nav-tab" onclick="showSection('body')">Body-Worn Setup</div>
+            <div class="nav-tab" onclick="showSection('cables')">Cable Routing</div>
+            <div class="nav-tab" onclick="showSection('specs')">Technical Specifications</div>
+            <div class="nav-tab" onclick="showSection('integration')">Integration Matrix</div>
+        </div>
+        
+        <!-- System Architecture Section -->
+        <div id="system" class="content-section active">
+            <div class="diagram-container">
+                <div class="diagram-title">
+                    <span class="status-indicator"></span>
+                    System Communication Architecture
+                </div>
+                <svg id="system-diagram" class="technical-svg" viewBox="0 0 1200 800"></svg>
+            </div>
+            
+            <div class="component-grid">
+                <div class="component-card">
+                    <div class="component-header">
+                        <div class="component-name">INVISIO V60 II Control Unit</div>
+                    </div>
+                    <div class="component-body">
+                        <div class="spec-table">
+                            <div class="spec-row">
+                                <span class="spec-label">Model:</span>
+                                <span class="spec-value">V60 II Gen 2</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">COM Ports:</span>
+                                <span class="spec-value">3 x Multi-Function</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">PTT Buttons:</span>
+                                <span class="spec-value">4 x Programmable</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Dimensions:</span>
+                                <span class="spec-value">70 x 63 x 25 mm</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Weight:</span>
+                                <span class="spec-value">152 g</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Submersible:</span>
+                                <span class="spec-value">20 meters</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Standards:</span>
+                                <span class="spec-value">MIL-STD-810G</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="component-card">
+                    <div class="component-header">
+                        <div class="component-name">INVISIO X7 In-Ear System</div>
+                    </div>
+                    <div class="component-body">
+                        <div class="spec-table">
+                            <div class="spec-row">
+                                <span class="spec-label">Type:</span>
+                                <span class="spec-value">Dual In-Ear</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Protection:</span>
+                                <span class="spec-value">39dB SNR</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Hear-Through:</span>
+                                <span class="spec-value">360° Awareness</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Frequency:</span>
+                                <span class="spec-value">20Hz - 20kHz</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Impedance:</span>
+                                <span class="spec-value">32 Ohm</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Cable Length:</span>
+                                <span class="spec-value">1.2 meters</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Connector:</span>
+                                <span class="spec-value">Fischer 7-pin</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Body-Worn Setup Section -->
+        <div id="body" class="content-section">
+            <div class="diagram-container">
+                <div class="diagram-title">
+                    <span class="status-indicator"></span>
+                    Tactical Body-Worn Configuration
+                </div>
+                <div class="body-diagram">
+                    <div class="operator-view">
+                        <svg id="operator-front" width="250" height="400" viewBox="0 0 250 400"></svg>
+                        <div class="view-label">Front View</div>
+                    </div>
+                    <div class="operator-view">
+                        <svg id="operator-side" width="200" height="400" viewBox="0 0 200 400"></svg>
+                        <div class="view-label">Side View</div>
+                    </div>
+                    <div class="operator-view">
+                        <svg id="operator-back" width="250" height="400" viewBox="0 0 250 400"></svg>
+                        <div class="view-label">Back View</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Cable Routing Section -->
+        <div id="cables" class="content-section">
+            <div class="diagram-container">
+                <div class="diagram-title">
+                    <span class="status-indicator"></span>
+                    Cable Routing & Management System
+                </div>
+                <svg id="cable-diagram" class="technical-svg" viewBox="0 0 1200 600"></svg>
+            </div>
+            
+            <div class="component-grid">
+                <div class="component-card">
+                    <div class="component-header">
+                        <div class="component-name">TETRA Interface Cable</div>
+                    </div>
+                    <div class="component-body">
+                        <div class="spec-table">
+                            <div class="spec-row">
+                                <span class="spec-label">Connector A:</span>
+                                <span class="spec-value">26-pin Accessory</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Connector B:</span>
+                                <span class="spec-value">Fischer 10-pin</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Length:</span>
+                                <span class="spec-value">1.5 meters</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Shielding:</span>
+                                <span class="spec-value">Braided + Foil</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Temp Rating:</span>
+                                <span class="spec-value">-40°C to +85°C</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="component-card">
+                    <div class="component-header">
+                        <div class="component-name">Samsung Audio Cable</div>
+                    </div>
+                    <div class="component-body">
+                        <div class="spec-table">
+                            <div class="spec-row">
+                                <span class="spec-label">Connector A:</span>
+                                <span class="spec-value">USB-C Audio</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Connector B:</span>
+                                <span class="spec-value">Fischer 10-pin</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Length:</span>
+                                <span class="spec-value">1.2 meters</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Type:</span>
+                                <span class="spec-value">Coiled Tactical</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Protection:</span>
+                                <span class="spec-value">Kevlar Sleeve</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Technical Specifications Section -->
+        <div id="specs" class="content-section">
+            <div class="diagram-container">
+                <div class="diagram-title">
+                    <span class="status-indicator"></span>
+                    System Technical Specifications
+                </div>
+                
+                <div class="matrix-container">
+                    <table class="connection-matrix">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Specification</th>
+                                <th>Standard</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Operating Temperature</td>
+                                <td>-20°C to +60°C</td>
+                                <td>MIL-STD-810G Method 501.5/502.5</td>
+                                <td><span class="status-badge status-active">Verified</span></td>
+                            </tr>
+                            <tr>
+                                <td>Storage Temperature</td>
+                                <td>-40°C to +85°C</td>
+                                <td>MIL-STD-810G Method 501.5/502.5</td>
+                                <td><span class="status-badge status-active">Verified</span></td>
+                            </tr>
+                            <tr>
+                                <td>Humidity</td>
+                                <td>95% RH @ 60°C</td>
+                                <td>MIL-STD-810G Method 507.5</td>
+                                <td><span class="status-badge status-active">Verified</span></td>
+                            </tr>
+                            <tr>
+                                <td>Sand/Dust Protection</td>
+                                <td>IP68 Rating</td>
+                                <td>IEC 60529</td>
+                                <td><span class="status-badge status-active">Verified</span></td>
+                            </tr>
+                            <tr>
+                                <td>Drop Test</td>
+                                <td>2 meters onto concrete</td>
+                                <td>MIL-STD-810G Method 516.6</td>
+                                <td><span class="status-badge status-active">Verified</span></td>
+                            </tr>
+                            <tr>
+                                <td>Vibration</td>
+                                <td>Category 24</td>
+                                <td>MIL-STD-810G Method 514.6</td>
+                                <td><span class="status-badge status-active">Verified</span></td>
+                            </tr>
+                            <tr>
+                                <td>EMI/EMC</td>
+                                <td>CE/FCC Compliant</td>
+                                <td>MIL-STD-461F</td>
+                                <td><span class="status-badge status-active">Verified</span></td>
+                            </tr>
+                            <tr>
+                                <td>Audio Protection</td>
+                                <td>39dB SNR</td>
+                                <td>EN 352-2:2002</td>
+                                <td><span class="status-badge status-active">Verified</span></td>
+                            </tr>
+                            <tr>
+                                <td>Battery Life</td>
+                                <td>15+ hours continuous</td>
+                                <td>Internal Testing</td>
+                                <td><span class="status-badge status-active">Verified</span></td>
+                            </tr>
+                            <tr>
+                                <td>Submersion</td>
+                                <td>20 meters / 30 minutes</td>
+                                <td>IP68 / MIL-STD-810G</td>
+                                <td><span class="status-badge status-active">Verified</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Integration Matrix Section -->
+        <div id="integration" class="content-section">
+            <div class="diagram-container">
+                <div class="diagram-title">
+                    <span class="status-indicator"></span>
+                    System Integration Matrix
+                </div>
+                <svg id="integration-diagram" class="technical-svg" viewBox="0 0 1200 600"></svg>
+            </div>
+            
+            <div class="diagram-container">
+                <div class="diagram-title">Connection Pin Assignment</div>
+                <div class="matrix-container">
+                    <table class="connection-matrix">
+                        <thead>
+                            <tr>
+                                <th>Pin</th>
+                                <th>TETRA (26-pin)</th>
+                                <th>V60 COM1</th>
+                                <th>V60 COM2</th>
+                                <th>V60 COM3</th>
+                                <th>Signal Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Audio Out +</td>
+                                <td>Audio In +</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>Analog</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Audio Out -</td>
+                                <td>Audio In -</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>Analog</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Mic In +</td>
+                                <td>Audio Out +</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>Analog</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Mic In -</td>
+                                <td>Audio Out -</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>Analog</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>PTT</td>
+                                <td>PTT1</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>Digital</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>GND</td>
+                                <td>GND</td>
+                                <td>GND</td>
+                                <td>GND</td>
+                                <td>Ground</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>+5V DC</td>
+                                <td>VCC</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>Power</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Data TX</td>
+                                <td>-</td>
+                                <td>Data In</td>
+                                <td>-</td>
+                                <td>Digital</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Data RX</td>
+                                <td>-</td>
+                                <td>Data Out</td>
+                                <td>-</td>
+                                <td>Digital</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Emergency</td>
+                                <td>Emergency In</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>Digital</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Dubai Police SWAT Communication System - Technical Manual v1.0</p>
+            <p>© 2025 - Tactical Communication Systems Division</p>
+            <div class="classification">OFFICIAL USE ONLY</div>
+        </footer>
+    </div>
+    
+    <script>
+        // Tab Navigation
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Set active tab
+            event.target.classList.add('active');
+        }
+        
+        // System Architecture Diagram
+        function drawSystemDiagram() {
+            const svg = d3.select("#system-diagram");
+            const width = 1200;
+            const height = 800;
+            
+            // Clear existing content
+            svg.selectAll("*").remove();
+            
+            // Define gradients
+            const defs = svg.append("defs");
+            
+            // Command gradient (green)
+            const commandGradient = defs.append("linearGradient")
+                .attr("id", "commandGradient")
+                .attr("x1", "0%").attr("y1", "0%")
+                .attr("x2", "100%").attr("y2", "100%");
+            commandGradient.append("stop").attr("offset", "0%").attr("stop-color", "#4A5F42");
+            commandGradient.append("stop").attr("offset", "100%").attr("stop-color", "#2A3F22");
+            
+            // Team gradient (blue)
+            const teamGradient = defs.append("linearGradient")
+                .attr("id", "teamGradient")
+                .attr("x1", "0%").attr("y1", "0%")
+                .attr("x2", "100%").attr("y2", "100%");
+            teamGradient.append("stop").attr("offset", "0%").attr("stop-color", "#1E3A5F");
+            teamGradient.append("stop").attr("offset", "100%").attr("stop-color", "#0E2A3F");
+            
+            // Power gradient (orange)
+            const powerGradient = defs.append("linearGradient")
+                .attr("id", "powerGradient")
+                .attr("x1", "0%").attr("y1", "0%")
+                .attr("x2", "100%").attr("y2", "100%");
+            powerGradient.append("stop").attr("offset", "0%").attr("stop-color", "#FF6B35");
+            powerGradient.append("stop").attr("offset", "100%").attr("stop-color", "#DF4B15");
+            
+            // Network Components
+            const components = [
+                { id: "tetra", x: 200, y: 300, width: 180, height: 100, label: "TETRA NETWORK", color: "url(#commandGradient)" },
+                { id: "etisalat", x: 200, y: 500, width: 180, height: 100, label: "ETISALAT 4G/5G", color: "url(#teamGradient)" },
+                { id: "v60", x: 500, y: 200, width: 200, height: 120, label: "INVISIO V60 II", color: "#1a1a1a" },
+                { id: "x7", x: 500, y: 400, width: 200, height: 80, label: "X7 HEADSET", color: "#1a1a1a" },
+                { id: "samsung", x: 800, y: 300, width: 180, height: 100, label: "SAMSUNG S25", color: "url(#teamGradient)" },
+                { id: "atak", x: 800, y: 500, width: 180, height: 100, label: "ATAK SOFTWARE", color: "#1a1a1a" },
+                { id: "power", x: 500, y: 600, width: 200, height: 80, label: "42,000mAh POWER", color: "url(#powerGradient)" }
+            ];
+            
+            // Draw components
+            const componentGroups = svg.selectAll(".component")
+                .data(components)
+                .enter()
+                .append("g")
+                .attr("class", "component");
+            
+            componentGroups.append("rect")
+                .attr("x", d => d.x)
+                .attr("y", d => d.y)
+                .attr("width", d => d.width)
+                .attr("height", d => d.height)
+                .attr("fill", d => d.color)
+                .attr("stroke", "#4A5F42")
+                .attr("stroke-width", 1)
+                .attr("rx", 4);
+            
+            componentGroups.append("text")
+                .attr("x", d => d.x + d.width/2)
+                .attr("y", d => d.y + d.height/2)
+                .attr("text-anchor", "middle")
+                .attr("dominant-baseline", "middle")
+                .attr("fill", "#fff")
+                .attr("font-size", "14px")
+                .attr("font-weight", "600")
+                .text(d => d.label);
+            
+            // Connection paths with animation
+            const connections = [
+                { source: "tetra", target: "v60", type: "audio", color: "#4A5F42" },
+                { source: "etisalat", target: "samsung", type: "data", color: "#1E3A5F" },
+                { source: "samsung", target: "v60", type: "audio", color: "#1E3A5F" },
+                { source: "samsung", target: "atak", type: "data", color: "#6B5B95" },
+                { source: "v60", target: "x7", type: "audio", color: "#888" },
+                { source: "power", target: "v60", type: "power", color: "#FF6B35" },
+                { source: "power", target: "samsung", type: "power", color: "#FF6B35" }
+            ];
+            
+            connections.forEach(conn => {
+                const source = components.find(c => c.id === conn.source);
+                const target = components.find(c => c.id === conn.target);
+                
+                const path = svg.append("path")
+                    .attr("d", `M ${source.x + source.width} ${source.y + source.height/2} 
+                                Q ${(source.x + target.x)/2} ${(source.y + target.y)/2}
+                                ${target.x} ${target.y + target.height/2}`)
+                    .attr("fill", "none")
+                    .attr("stroke", conn.color)
+                    .attr("stroke-width", 2)
+                    .attr("stroke-dasharray", "5,5")
+                    .attr("opacity", 0.7);
+                
+                // Animate the path
+                const pathLength = path.node().getTotalLength();
+                path.attr("stroke-dasharray", pathLength + " " + pathLength)
+                    .attr("stroke-dashoffset", pathLength)
+                    .transition()
+                    .duration(2000)
+                    .ease(d3.easeLinear)
+                    .attr("stroke-dashoffset", 0)
+                    .attr("stroke-dasharray", "5,5");
+            });
+            
+            // Add signal flow indicators
+            connections.forEach((conn, i) => {
+                const source = components.find(c => c.id === conn.source);
+                const target = components.find(c => c.id === conn.target);
+                
+                const circle = svg.append("circle")
+                    .attr("r", 4)
+                    .attr("fill", conn.color);
+                
+                const animateDot = () => {
+                    circle.attr("cx", source.x + source.width)
+                        .attr("cy", source.y + source.height/2)
+                        .transition()
+                        .duration(3000)
+                        .delay(i * 300)
+                        .attr("cx", target.x)
+                        .attr("cy", target.y + target.height/2)
+                        .on("end", animateDot);
+                };
+                animateDot();
+            });
+        }
+        
+        // Body-Worn Equipment Diagram
+        function drawBodyDiagram() {
+            // Front View
+            const frontSvg = d3.select("#operator-front");
+            
+            // Draw operator silhouette
+            frontSvg.append("path")
+                .attr("d", "M 125 50 C 145 50, 155 60, 155 80 L 155 120 L 180 140 L 180 200 L 155 200 L 155 350 L 135 350 L 135 250 L 115 250 L 115 350 L 95 350 L 95 200 L 70 200 L 70 140 L 95 120 L 95 80 C 95 60, 105 50, 125 50")
+                .attr("fill", "#1a1a1a")
+                .attr("stroke", "#4A5F42")
+                .attr("stroke-width", 2);
+            
+            // V60 Control Unit on chest
+            frontSvg.append("rect")
+                .attr("x", 100)
+                .attr("y", 140)
+                .attr("width", 50)
+                .attr("height", 40)
+                .attr("fill", "#2a2a2a")
+                .attr("stroke", "#4A5F42")
+                .attr("stroke-width", 2)
+                .attr("rx", 4);
+            
+            frontSvg.append("text")
+                .attr("x", 125)
+                .attr("y", 163)
+                .attr("text-anchor", "middle")
+                .attr("fill", "#fff")
+                .attr("font-size", "10px")
+                .text("V60");
+            
+            // Samsung phone on belt
+            frontSvg.append("rect")
+                .attr("x", 90)
+                .attr("y", 200)
+                .attr("width", 30)
+                .attr("height", 50)
+                .attr("fill", "#1E3A5F")
+                .attr("stroke", "#1E3A5F")
+                .attr("stroke-width", 2)
+                .attr("rx", 4);
+            
+            // Power bank on belt
+            frontSvg.append("rect")
+                .attr("x", 130)
+                .attr("y", 200)
+                .attr("width", 40)
+                .attr("height", 50)
+                .attr("fill", "#FF6B35")
+                .attr("stroke", "#FF6B35")
+                .attr("stroke-width", 2)
+                .attr("rx", 4);
+            
+            // PTT on shoulder
+            frontSvg.append("circle")
+                .attr("cx", 85)
+                .attr("cy", 120)
+                .attr("r", 8)
+                .attr("fill", "#4A5F42")
+                .attr("stroke", "#fff")
+                .attr("stroke-width", 1);
+            
+            // Draw cables
+            const cablePath = frontSvg.append("path")
+                .attr("d", "M 85 120 Q 100 130, 110 140 M 140 140 Q 150 130, 165 120")
+                .attr("fill", "none")
+                .attr("stroke", "#888")
+                .attr("stroke-width", 2)
+                .attr("stroke-dasharray", "3,3");
+            
+            // Side View
+            const sideSvg = d3.select("#operator-side");
+            
+            sideSvg.append("path")
+                .attr("d", "M 100 50 C 120 50, 130 60, 130 80 L 130 120 L 140 140 L 140 200 L 130 200 L 130 350 L 100 350 L 100 200 L 90 200 L 90 140 L 100 120 L 100 80")
+                .attr("fill", "#1a1a1a")
+                .attr("stroke", "#4A5F42")
+                .attr("stroke-width", 2);
+            
+            // Show cable routing along side
+            sideSvg.append("path")
+                .attr("d", "M 100 120 L 100 140 L 110 160 L 110 200")
+                .attr("fill", "none")
+                .attr("stroke", "#888")
+                .attr("stroke-width", 2)
+                .attr("stroke-dasharray", "3,3");
+            
+            // Back View
+            const backSvg = d3.select("#operator-back");
+            
+            backSvg.append("path")
+                .attr("d", "M 125 50 C 145 50, 155 60, 155 80 L 155 120 L 180 140 L 180 200 L 155 200 L 155 350 L 135 350 L 135 250 L 115 250 L 115 350 L 95 350 L 95 200 L 70 200 L 70 140 L 95 120 L 95 80 C 95 60, 105 50, 125 50")
+                .attr("fill", "#1a1a1a")
+                .attr("stroke", "#4A5F42")
+                .attr("stroke-width", 2);
+            
+            // TETRA radio on back
+            backSvg.append("rect")
+                .attr("x", 110)
+                .attr("y", 150)
+                .attr("width", 30)
+                .attr("height", 60)
+                .attr("fill", "#4A5F42")
+                .attr("stroke", "#4A5F42")
+                .attr("stroke-width", 2)
+                .attr("rx", 4);
+            
+            backSvg.append("text")
+                .attr("x", 125)
+                .attr("y", 180)
+                .attr("text-anchor", "middle")
+                .attr("fill", "#fff")
+                .attr("font-size", "10px")
+                .text("TETRA");
+            
+            // Cable management channels
+            backSvg.append("path")
+                .attr("d", "M 85 120 L 85 150 L 110 150 M 140 150 L 165 150 L 165 120")
+                .attr("fill", "none")
+                .attr("stroke", "#888")
+                .attr("stroke-width", 2)
+                .attr("stroke-dasharray", "3,3");
+        }
+        
+        // Cable Routing Diagram
+        function drawCableDiagram() {
+            const svg = d3.select("#cable-diagram");
+            const width = 1200;
+            const height = 600;
+            
+            svg.selectAll("*").remove();
+            
+            // MOLLE Grid Background
+            for(let x = 50; x < width; x += 40) {
+                for(let y = 50; y < height; y += 30) {
+                    svg.append("rect")
+                        .attr("x", x)
+                        .attr("y", y)
+                        .attr("width", 35)
+                        .attr("height", 10)
+                        .attr("fill", "#0a0a0a")
+                        .attr("stroke", "#1a1a1a")
+                        .attr("stroke-width", 1)
+                        .attr("rx", 2);
+                }
+            }
+            
+            // Main cable paths
+            const cablePaths = [
+                {
+                    name: "TETRA Audio",
+                    path: "M 200 300 Q 400 250, 600 300 Q 800 350, 1000 300",
+                    color: "#4A5F42"
+                },
+                {
+                    name: "Samsung Audio",
+                    path: "M 200 350 Q 400 400, 600 350 Q 800 300, 1000 350",
+                    color: "#1E3A5F"
+                },
+                {
+                    name: "Power Distribution",
+                    path: "M 600 500 Q 400 450, 300 400 M 600 500 Q 800 450, 900 400",
+                    color: "#FF6B35"
+                }
+            ];
+            
+            cablePaths.forEach((cable, i) => {
+                const path = svg.append("path")
+                    .attr("d", cable.path)
+                    .attr("fill", "none")
+                    .attr("stroke", cable.color)
+                    .attr("stroke-width", 3)
+                    .attr("stroke-linecap", "round")
+                    .attr("opacity", 0.8);
+                
+                // Animate cable drawing
+                const pathLength = path.node().getTotalLength();
+                path.attr("stroke-dasharray", pathLength + " " + pathLength)
+                    .attr("stroke-dashoffset", pathLength)
+                    .transition()
+                    .duration(2000)
+                    .delay(i * 500)
+                    .ease(d3.easeQuadInOut)
+                    .attr("stroke-dashoffset", 0);
+                
+                // Add cable label
+                svg.append("text")
+                    .attr("x", 100)
+                    .attr("y", 300 + (i * 50))
+                    .attr("fill", cable.color)
+                    .attr("font-size", "12px")
+                    .attr("font-weight", "600")
+                    .text(cable.name);
+            });
+            
+            // Cable management points
+            const managementPoints = [
+                { x: 300, y: 300, label: "Shoulder Loop" },
+                { x: 600, y: 350, label: "Chest Anchor" },
+                { x: 900, y: 300, label: "Belt Clip" }
+            ];
+            
+            managementPoints.forEach(point => {
+                svg.append("circle")
+                    .attr("cx", point.x)
+                    .attr("cy", point.y)
+                    .attr("r", 8)
+                    .attr("fill", "#2a2a2a")
+                    .attr("stroke", "#888")
+                    .attr("stroke-width", 2);
+                
+                svg.append("text")
+                    .attr("x", point.x)
+                    .attr("y", point.y - 15)
+                    .attr("text-anchor", "middle")
+                    .attr("fill", "#888")
+                    .attr("font-size", "10px")
+                    .text(point.label);
+            });
+        }
+        
+        // Integration Matrix Diagram
+        function drawIntegrationDiagram() {
+            const svg = d3.select("#integration-diagram");
+            const width = 1200;
+            const height = 600;
+            
+            svg.selectAll("*").remove();
+            
+            // Create a force-directed network diagram
+            const nodes = [
+                { id: "core", label: "V60 CORE", x: 600, y: 300, group: 0 },
+                { id: "tetra", label: "TETRA", x: 300, y: 200, group: 1 },
+                { id: "samsung", label: "SAMSUNG", x: 300, y: 400, group: 2 },
+                { id: "x7", label: "X7 AUDIO", x: 900, y: 200, group: 3 },
+                { id: "ptt1", label: "PTT-L", x: 450, y: 150, group: 1 },
+                { id: "ptt2", label: "PTT-R", x: 450, y: 450, group: 2 },
+                { id: "power", label: "POWER", x: 600, y: 500, group: 4 },
+                { id: "atak", label: "ATAK", x: 150, y: 400, group: 2 },
+                { id: "bft", label: "BFT", x: 150, y: 300, group: 2 }
+            ];
+            
+            const links = [
+                { source: "tetra", target: "core", type: "audio" },
+                { source: "samsung", target: "core", type: "audio" },
+                { source: "core", target: "x7", type: "audio" },
+                { source: "ptt1", target: "tetra", type: "control" },
+                { source: "ptt2", target: "samsung", type: "control" },
+                { source: "power", target: "core", type: "power" },
+                { source: "samsung", target: "atak", type: "data" },
+                { source: "atak", target: "bft", type: "data" }
+            ];
+            
+            // Draw links
+            links.forEach(link => {
+                const sourceNode = nodes.find(n => n.id === link.source);
+                const targetNode = nodes.find(n => n.id === link.target);
+                
+                const gradient = svg.append("defs").append("linearGradient")
+                    .attr("id", `gradient-${link.source}-${link.target}`)
+                    .attr("x1", "0%").attr("y1", "0%")
+                    .attr("x2", "100%").attr("y2", "0%");
+                
+                const color = link.type === "audio" ? "#4A5F42" :
+                             link.type === "control" ? "#1E3A5F" :
+                             link.type === "power" ? "#FF6B35" : "#6B5B95";
+                
+                gradient.append("stop").attr("offset", "0%").attr("stop-color", color).attr("stop-opacity", 0.3);
+                gradient.append("stop").attr("offset", "100%").attr("stop-color", color).attr("stop-opacity", 1);
+                
+                svg.append("line")
+                    .attr("x1", sourceNode.x)
+                    .attr("y1", sourceNode.y)
+                    .attr("x2", targetNode.x)
+                    .attr("y2", targetNode.y)
+                    .attr("stroke", `url(#gradient-${link.source}-${link.target})`)
+                    .attr("stroke-width", 2)
+                    .attr("opacity", 0.6);
+            });
+            
+            // Draw nodes
+            const nodeGroups = svg.selectAll(".node")
+                .data(nodes)
+                .enter()
+                .append("g")
+                .attr("transform", d => `translate(${d.x}, ${d.y})`);
+            
+            nodeGroups.append("circle")
+                .attr("r", d => d.id === "core" ? 40 : 25)
+                .attr("fill", d => {
+                    const colors = ["#2a2a2a", "#4A5F42", "#1E3A5F", "#6B5B95", "#FF6B35"];
+                    return colors[d.group];
+                })
+                .attr("stroke", "#888")
+                .attr("stroke-width", 2);
+            
+            nodeGroups.append("text")
+                .attr("text-anchor", "middle")
+                .attr("dominant-baseline", "middle")
+                .attr("fill", "#fff")
+                .attr("font-size", "11px")
+                .attr("font-weight", "600")
+                .text(d => d.label);
+            
+            // Add pulsing effect to core node
+            svg.select("circle")
+                .append("animate")
+                .attr("attributeName", "r")
+                .attr("values", "38;42;38")
+                .attr("dur", "2s")
+                .attr("repeatCount", "indefinite");
+        }
+        
+        // Initialize all diagrams
+        window.addEventListener('DOMContentLoaded', () => {
+            drawSystemDiagram();
+            drawBodyDiagram();
+            drawCableDiagram();
+            drawIntegrationDiagram();
+        });
+        
+        // Redraw on resize
+        window.addEventListener('resize', () => {
+            drawSystemDiagram();
+            drawBodyDiagram();
+            drawCableDiagram();
+            drawIntegrationDiagram();
+        });
+    </script>
+</body>
+</html>

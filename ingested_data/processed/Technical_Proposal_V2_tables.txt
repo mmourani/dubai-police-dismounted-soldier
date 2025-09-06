@@ -1,0 +1,69 @@
+| Cable | Function | Length | Specification |
+|-------|----------|---------|--------------|
+| CBL-001 | Tetra→INVISIO | 60cm | MIL-DTL-38999, Shielded |
+| CBL-002 | Samsung→INVISIO | 50cm | USB-C Audio, Shielded |
+| CBL-003 | Battery→Samsung | 80cm | USB-C PD 3.0, 45W |
+| CBL-004 | Battery→Accessory | 40cm | USB-C PD 3.0, 15W |
+| Standard | Description | Compliance |
+|----------|-------------|------------|
+| MIL-STD-810H | Environmental Engineering | ✅ Certified |
+| MIL-STD-461G | EMI/EMC Requirements | ✅ Certified |
+| MIL-STD-1474E | Hearing Protection | ✅ Certified |
+| MIL-DTL-38999 | Connector Specification | ✅ Compliant |
+| Certification | Description | Status |
+|--------------|-------------|---------|
+| CE | European Conformity | ✅ Marked |
+| FCC Part 15 | RF Emissions | ✅ Compliant |
+| IP68 | Ingress Protection | ✅ Tested |
+| UN38.3 | Battery Transport | ✅ Certified |
+| RoHS | Hazardous Substances | ✅ Compliant |
+| Component | Quantity | Unit Price (AED) | Total (AED) |
+|-----------|----------|------------------|-------------|
+| INVISIO V60 II + X7 | 1 | 18,625 | 18,625 |
+| Dual PTT Assembly | 1 | 1,065 | 1,065 |
+| Samsung Galaxy S25 | 1 | 6,386 | 6,386 |
+| Bunker MAAK Case | 1 | 1,065 | 1,065 |
+| Forearm Mount | 1 | 532 | 532 |
+| Dual Battery System | 1 | 5,322 | 5,322 |
+| Cable Set (4 cables) | 1 | 2,664 | 2,664 |
+| Integration/Testing | 1 | 1,500 | 1,500 |
+| Training (per kit) | 1 | 1,341 | 1,341 |
+| **TOTAL PER KIT** | | | **38,500** |
+| Quantity | Price per Kit | Total Price | Discount |
+|----------|---------------|-------------|----------|
+| 6 Kits | AED 38,500 | AED 231,000 | 0% |
+| 8 Kits | AED 37,500 | AED 300,000 | 2.6% |
+| 10 Kits | AED 36,500 | AED 365,000 | 5.2% |
+| 15+ Kits | AED 35,500 | Contact Us | 7.8% |
+| Service | Description | Price (AED) |
+|---------|-------------|-------------|
+| Extended Warranty | +12 months coverage | 5,775/kit/year |
+| On-site Support | Dedicated technician | 5,500/day |
+| Spare Parts Kit | 20% spare components | 7,700/kit |
+| Advanced Training | Specialized instruction | 7,500/day |
+| Custom Integration | System modifications | Quote on request |
+| Milestone | Target Date | Deliverable |
+|-----------|------------|-------------|
+| Contract Signature | Week 0 | Project initiation |
+| FAT Completion | Week 5 | System validation |
+| Delivery to Dubai | Week 6 | Physical handover |
+| Training Completion | Week 7 | Certified operators |
+| Final Acceptance | Week 8 | Operational capability |
+| Risk | Impact | Mitigation |
+|------|--------|------------|
+| Component availability | Delay | Pre-order critical items |
+| Integration issues | Performance | Extensive testing program |
+| Environmental extremes | Failure | Over-spec components |
+| Power insufficiency | Downtime | Dual battery system |
+| Risk | Impact | Mitigation |
+|------|--------|------------|
+| Training gaps | Misuse | Comprehensive program |
+| Maintenance lapses | Degradation | Scheduled service |
+| Spare parts shortage | Downtime | Local inventory |
+| Obsolescence | Unsupported | Technology refresh plan |
+| Risk | Impact | Mitigation |
+|------|--------|------------|
+| Currency fluctuation | Cost increase | Fixed pricing period |
+| Shipping delays | Late delivery | Air freight option |
+| Customs issues | Hold at border | Proper documentation |
+| Warranty claims | Unexpected cost | Clear terms & conditions |

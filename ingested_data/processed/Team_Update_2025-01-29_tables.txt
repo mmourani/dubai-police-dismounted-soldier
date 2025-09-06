@@ -1,0 +1,6 @@
+| Risk | Impact | Mitigation | Owner |
+|------|--------|------------|-------|
+| Power documentation | HIGH | Multiple supplier options | Engineering |
+| S25 availability | MEDIUM | S24 backup plan ready | Procurement |
+| Heat performance | HIGH | Over-spec components by 20% | Engineering |
+| Cable lead time | MEDIUM | Start fabrication immediately | Procurement |

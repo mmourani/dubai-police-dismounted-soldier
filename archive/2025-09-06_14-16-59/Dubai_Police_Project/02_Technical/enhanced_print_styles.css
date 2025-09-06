@@ -1,0 +1,328 @@
+/* Enhanced Professional Print-Optimized CSS for Dubai Police Documents */
+
+/* Base Print Styles */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 2cm 1.5cm 2cm 1.5cm;
+    font-family: 'Arial', 'Helvetica', sans-serif;
+  }
+  
+  * {
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+/* Screen and Print Common Styles */
+body { 
+  font-family: 'Arial', 'Helvetica', 'Segoe UI', sans-serif; 
+  margin: 15px auto; 
+  max-width: 1200px;
+  background: white; 
+  color: #1a1a1a; 
+  line-height: 1.4;
+  font-size: 12pt;
+}
+
+/* Headers */
+h1 { 
+  color: #1a472a; 
+  border-bottom: 4px solid #1a472a; 
+  padding-bottom: 12px; 
+  margin-bottom: 25px; 
+  font-size: 24pt;
+  font-weight: 700;
+  text-align: center;
+  page-break-after: avoid;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+h2 { 
+  color: #2c3e50; 
+  background: linear-gradient(135deg, #ecf0f1 0%, #d5dbdb 100%);
+  padding: 12px 15px;
+  margin: 25px 0 15px 0;
+  font-size: 16pt;
+  font-weight: 600;
+  page-break-after: avoid;
+  border-left: 5px solid #3498db;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+h3 { 
+  color: #2c3e50; 
+  margin-top: 20px; 
+  margin-bottom: 12px;
+  font-size: 14pt;
+  font-weight: 600;
+  page-break-after: avoid;
+  border-bottom: 2px solid #bdc3c7;
+  padding-bottom: 5px;
+}
+
+/* Horizontal Rules */
+hr { 
+  border: none; 
+  height: 3px; 
+  background: linear-gradient(to right, #1a472a, #3498db, #1a472a); 
+  margin: 25px 0;
+  page-break-after: avoid;
+}
+
+/* Enhanced Table Styling */
+table { 
+  width: 100%; 
+  border-collapse: collapse; 
+  margin: 15px 0; 
+  font-size: 10pt;
+  page-break-inside: auto;
+  border: 3px solid #1a472a;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Table Headers */
+th { 
+  background: linear-gradient(135deg, #1a472a 0%, #2c5f2d 100%) !important; 
+  color: white !important; 
+  padding: 14px 10px; 
+  text-align: center; 
+  font-weight: 700;
+  font-size: 9pt;
+  border: 2px solid #0f2f1a;
+  page-break-inside: avoid;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+/* Table Cells */
+td { 
+  padding: 10px 8px; 
+  border: 1px solid #95a5a6;
+  vertical-align: middle;
+  font-size: 10pt;
+  line-height: 1.3;
+}
+
+/* Table Row Styling */
+tr:nth-child(even) { 
+  background: #f8fbfc !important; 
+}
+
+tr:nth-child(odd) { 
+  background: white !important; 
+}
+
+/* Category Headers in Tables */
+tr:has(td[colspan]),
+td[colspan] {
+  background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%) !important;
+  color: white !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  font-size: 11pt !important;
+  padding: 12px 8px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Subtotal/Total Rows - Enhanced */
+.total-row,
+tr:contains("SUBTOTAL"),
+tr:contains("TOTAL"),
+tr:contains("GRAND TOTAL") { 
+  background: linear-gradient(135deg, #e8f4f8 0%, #d5e8f0 100%) !important; 
+  font-weight: 700 !important;
+  border-top: 2px solid #3498db !important;
+  border-bottom: 2px solid #3498db !important;
+}
+
+/* Grand Total Special Styling */
+tr:contains("GRAND TOTAL") {
+  background: linear-gradient(135deg, #1a472a 0%, #2c5f2d 100%) !important;
+  color: white !important;
+  font-size: 11pt !important;
+}
+
+/* Right-align numerical columns */
+td:nth-child(3),  /* Unit Price */
+td:nth-child(4),  /* Quantity */
+td:nth-child(5)   /* Total */
+{
+  text-align: right;
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+}
+
+/* Left-align item numbers */
+td:nth-child(1) {
+  text-align: center;
+  font-weight: 600;
+  background: #f8f9fa !important;
+}
+
+/* Strong Text Styling */
+strong { 
+  color: #1a472a; 
+  font-weight: 700;
+}
+
+/* Enhanced Lists */
+ul { 
+  padding-left: 25px; 
+}
+
+li { 
+  margin: 6px 0;
+  line-height: 1.4; 
+}
+
+/* Executive Summary Box */
+.executive-summary,
+div:contains("EXECUTIVE SUMMARY") {
+  background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%) !important;
+  border: 3px solid #1a472a !important;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  page-break-inside: avoid;
+  box-shadow: 0 4px 12px rgba(26, 71, 42, 0.15);
+}
+
+/* Delivery Terms Box */
+.delivery-terms {
+  background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%) !important;
+  border: 2px solid #ff9800 !important;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 6px;
+  page-break-inside: avoid;
+}
+
+/* Payment Terms Table */
+.payment-table,
+table:contains("Milestone") {
+  width: 70%;
+  margin: 20px auto;
+  border: 3px solid #2c3e50 !important;
+}
+
+/* Optional Services Table */
+.optional-services {
+  width: 85%;
+  margin: 15px auto;
+}
+
+/* Print-specific optimizations */
+@media print {
+  body {
+    background: white !important;
+    margin: 0;
+    max-width: none;
+  }
+  
+  /* Enhanced page break control */
+  h1, h2, h3 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+  
+  /* Keep important sections together */
+  .executive-summary,
+  .delivery-terms {
+    page-break-inside: avoid;
+  }
+  
+  /* Table print optimization */
+  table {
+    page-break-inside: auto;
+  }
+  
+  thead {
+    display: table-header-group;
+  }
+  
+  tr {
+    page-break-inside: avoid;
+  }
+  
+  /* Prevent widows and orphans */
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+  
+  /* Adjust font sizes for better print readability */
+  body { font-size: 10pt; }
+  h1 { font-size: 20pt; }
+  h2 { font-size: 14pt; }
+  h3 { font-size: 12pt; }
+  
+  table { font-size: 9pt; }
+  th { font-size: 8pt; }
+  td { font-size: 9pt; }
+  
+  /* Ensure proper contrast for printing */
+  th {
+    background: #1a472a !important;
+    color: white !important;
+    -webkit-print-color-adjust: exact !important;
+  }
+  
+  /* Stronger borders for print */
+  table, th, td {
+    border-color: #000 !important;
+    border-width: 1px !important;
+  }
+  
+  /* Category headers for print */
+  td[colspan] {
+    background: #2c3e50 !important;
+    color: white !important;
+    -webkit-print-color-adjust: exact !important;
+  }
+}
+
+/* Document Footer Styling */
+.document-reference {
+  text-align: center;
+  font-weight: 600;
+  margin-top: 30px;
+  padding: 15px;
+  background: #f8f9fa;
+  border: 2px solid #dee2e6;
+  page-break-inside: avoid;
+}
+
+/* AED Currency Styling */
+.currency {
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+}
+
+/* Percentage styling */
+.percentage {
+  font-style: italic;
+  color: #27ae60;
+  font-weight: 600;
+}
+
+/* Item numbering enhancement */
+.item-number {
+  background: #ecf0f1;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* Special highlighting for key totals */
+.key-total {
+  background: linear-gradient(135deg, #fff9c4 0%, #f7dc6f 100%) !important;
+  border: 2px solid #f39c12 !important;
+  font-size: 11pt !important;
+  font-weight: 700 !important;
+}

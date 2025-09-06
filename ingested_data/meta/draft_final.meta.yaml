@@ -1,0 +1,30 @@
+mode: DRAFT
+confidence: 72.0
+assumptions_count: 3
+assumptions:
+- gap_id: operational
+  gap_label: Operational requirements
+  assumption: Using standard configuration for Operational requirements
+  risk: MEDIUM
+- gap_id: competition
+  gap_label: Competitive landscape
+  assumption: Using standard configuration for Competitive landscape
+  risk: MEDIUM
+- gap_id: timeline
+  gap_label: Delivery timeline
+  assumption: Using standard configuration for Delivery timeline
+  risk: MEDIUM
+warning: This is a DRAFT with assumptions. Verify all assumptions before final generation.
+client: Dubai Police
+project: Dismounted Soldier Communication Kit
+equipment:
+  radio: TETRA
+  device: Samsung S25
+  audio: INVISIO X7 with dual PTT and tactical earplugs
+  mount: Foldable mid-torso bunker kit
+exclusions:
+- towers
+- SC4200
+- SC4400
+- Silvus radios
+generated_at: '2025-09-03T10:21:03.156106'

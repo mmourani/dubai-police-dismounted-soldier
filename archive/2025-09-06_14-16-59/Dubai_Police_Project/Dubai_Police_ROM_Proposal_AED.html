@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Dubai Police ROM Proposal - AED</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Dubai Police ROM Proposal - AED</h1>
+</header>
+<h1 id="dubai-police-swat-kit---rom-proposal">🎯 DUBAI POLICE SWAT KIT -
+ROM PROPOSAL</h1>
+<h2 id="system-configuration-diagram">SYSTEM CONFIGURATION DIAGRAM</h2>
+<pre><code>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    DUBAI POLICE SWAT KIT - PRICING BREAKDOWN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+                [OPERATOR]
+                    │
+        ┌───────────┼───────────┐
+        │           │           │
+    [HEAD]      [HAND]      [BELT]
+        │           │           │
+   INVISIO    Samsung S25   Tetra Radio
+   V60 II+X7   AED 6,386   (Customer&#39;s)
+   AED 18,625       │           │
+        │      Bunker Case   Belt Pouch
+   Dual PTT     AED 1,065    AED 184
+   Assembly         │
+   AED 1,065   Hand Strap
+                AED 532
+
+        ┌─────────────────────────┐
+        │   POWER &amp; CABLES HUB    │
+        │  ┌───────────────────┐  │
+        │  │ STAR-PAN Power    │  │
+        │  │ 42,000mAh Hot-Swap│  │
+        │  │    AED 5,322      │  │
+        │  └───────────────────┘  │
+        │                         │
+        │  Cable Set:             │
+        │  • Tetra-INVISIO: 1,332│
+        │  • Samsung-INVISIO: 800 │
+        │  • USB-C Power: 532    │
+        │  • MOLLE Pouches: 532   │
+        │  • Screen Protection:268│
+        └─────────────────────────┘</code></pre>
+<hr />
+<h2 id="system-configuration">SYSTEM CONFIGURATION</h2>
+<h3 id="head-system">HEAD SYSTEM</h3>
+<ul>
+<li>INVISIO V60 II Control Unit</li>
+<li>INVISIO X7 In-Ear Headset</li>
+<li>Dual PTT (Left=Tetra, Right=Samsung)</li>
+<li>IP68 Environmental Protection</li>
+</ul>
+<h3 id="hand-device">HAND DEVICE</h3>
+<ul>
+<li>Samsung Galaxy S25</li>
+<li>Bunker Supply Tactical Case</li>
+<li>Hand-Mount Retention System</li>
+<li>Glove-Compatible Screen</li>
+<li>Anti-Glare Protection</li>
+<li>Quick-Release Mechanism</li>
+</ul>
+<h3 id="belt-systems">BELT SYSTEMS</h3>
+<ul>
+<li>Tetra Radio (Customer’s)</li>
+<li>Belt Pouch/Clip Mount</li>
+<li>42,000mAh Power Bank</li>
+<li>Hot-Swap Battery System</li>
+<li>MOLLE Integration</li>
+</ul>
+<h3 id="connectivity">CONNECTIVITY</h3>
+<ul>
+<li>Tetra-to-INVISIO Cable</li>
+<li>Samsung-to-INVISIO Cable</li>
+<li>USB-C Power Distribution</li>
+<li>4G/5G via Etisalat SIM</li>
+<li>ATAK Software Ready</li>
+</ul>
+<hr />
+<h2 id="pricing-breakdown-aed">PRICING BREAKDOWN (AED)</h2>
+<h3 id="audio-system">AUDIO SYSTEM</h3>
+<ul>
+<li>INVISIO V60 II + X7: <strong>AED 18,625</strong></li>
+<li>Dual PTT Assembly: <strong>AED 1,065</strong></li>
+</ul>
+<h3 id="end-user-device">END USER DEVICE</h3>
+<ul>
+<li>Samsung Galaxy S25: <strong>AED 6,386</strong></li>
+<li>Bunker Case: <strong>AED 1,065</strong></li>
+<li>Hand Mount: <strong>AED 532</strong></li>
+<li>Screen Protection: <strong>AED 268</strong></li>
+</ul>
+<h3 id="power-system">POWER SYSTEM</h3>
+<ul>
+<li>42,000mAh Bank: <strong>AED 5,322</strong></li>
+<li>MOLLE Pouches: <strong>AED 532</strong></li>
+</ul>
+<h3 id="cables-interconnects">CABLES &amp; INTERCONNECTS</h3>
+<ul>
+<li>Tetra Cable: <strong>AED 1,332</strong></li>
+<li>Samsung Cable: <strong>AED 800</strong></li>
+<li>Power Cables: <strong>AED 532</strong></li>
+</ul>
+<h3 id="professional-services">PROFESSIONAL SERVICES</h3>
+<ul>
+<li>Integration &amp; Testing: <strong>AED 3,193</strong></li>
+<li>Project Management: <strong>AED 4,789</strong></li>
+<li>Risk Mitigation: <strong>AED 5,854</strong></li>
+</ul>
+<hr />
+<h2 id="total-pricing">TOTAL PRICING</h2>
+<p><strong>TOTAL PER KIT: AED 50,295</strong></p>
+<p><strong>ROM PRICE: AED 51,380/kit</strong></p>
+<hr />
+<h2 id="quantity-pricing-6-10-units">QUANTITY PRICING (6-10 UNITS)</h2>
+<ul>
+<li><strong>6 kits:</strong> AED 308,280</li>
+<li><strong>8 kits:</strong> AED 411,040</li>
+<li><strong>10 kits:</strong> AED 513,800</li>
+</ul>
+<hr />
+<h2 id="risk-analysis">RISK ANALYSIS</h2>
+<h3 id="critical-risks">⚠️ CRITICAL RISKS</h3>
+<h4 id="invisio-v60-x7">1️⃣ INVISIO V60 + X7</h4>
+<ul>
+<li>Risk: AED 11,010-14,680 range</li>
+<li>Military pricing varies</li>
+</ul>
+<h4 id="samsung-s25">2️⃣ Samsung S25</h4>
+<ul>
+<li>Risk: Not yet released</li>
+<li>Price estimate based on S24+10%</li>
+</ul>
+<h4 id="power-system-1">3️⃣ Power System</h4>
+<ul>
+<li>Risk: Heat requires 40% buffer</li>
+<li>Custom integration needed</li>
+</ul>
+<h4 id="tetra-cable">4️⃣ Tetra Cable</h4>
+<ul>
+<li>Risk: Custom cable may be AED 1,835+</li>
+<li>Encryption compatibility unknown</li>
+</ul>
+<h4 id="integration-complexity">5️⃣ Integration Complexity</h4>
+<ul>
+<li>Risk: No vendor quotes yet</li>
+<li>S25 mounting unvalidated</li>
+</ul>
+<p><strong>CONSERVATIVE ESTIMATE:</strong> AED 58,720-66,060/kit for
+full risk coverage</p>
+<hr />
+<h2 id="included-services">INCLUDED SERVICES</h2>
+<p>✓ On-site training (3 days)<br />
+✓ English documentation<br />
+✓ Remote technical support<br />
+✓ System integration<br />
+✓ Pre-deployment testing<br />
+✓ 1-Year warranty</p>
+<hr />
+<h2 id="optional-services">OPTIONAL SERVICES</h2>
+<ul>
+<li><strong>Extended Warranty:</strong> +15%/year</li>
+<li><strong>On-site Support:</strong> AED 5,505/day</li>
+<li><strong>Spare Parts (20%):</strong> AED 10,276/kit</li>
+<li><strong>Additional Training:</strong> AED 7,340/day</li>
+</ul>
+<hr />
+<h2 id="critical-assumptions">CRITICAL ASSUMPTIONS</h2>
+<p>⚪ Tetra provides unencrypted audio<br />
+⚪ Samsung S25 available in UAE<br />
+⚪ Standard 26-pin Tetra connector<br />
+⚪ Operating temp up to 60°C<br />
+⚪ Customer provides SIM cards<br />
+⚪ Customer provides ATAK license</p>
+<p><strong>NOTE: Changes to assumptions affect pricing</strong></p>
+<hr />
+<h2 id="terms-conditions">TERMS &amp; CONDITIONS</h2>
+<ul>
+<li>Exchange Rate: 1 USD = 3.67 AED</li>
+<li>Valid for 30 days</li>
+<li>Subject to component availability</li>
+<li>Payment terms: TBD</li>
+<li>Delivery: 6-8 weeks from order confirmation</li>
+</ul>
+<hr />
+<p><em>Document prepared for Dubai Police SWAT Team</em><br />
+<em>Date: January 2025</em><br />
+<em>Confidential - Not for Distribution</em></p>
+</body>
+</html>

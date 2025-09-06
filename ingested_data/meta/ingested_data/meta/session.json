@@ -1,0 +1,32 @@
+{
+  "step": 4,
+  "slots": {
+    "client": "Dubai Police",
+    "project": "Dismounted Soldier Communication Kit",
+    "device_model": "Samsung S25",
+    "confirm_radio_tetra": true
+  },
+  "history": [
+    {
+      "slot": "client",
+      "value": "Dubai Police",
+      "timestamp": "2025-09-02T21:25:52.268878"
+    },
+    {
+      "slot": "project",
+      "value": "Dismounted Soldier Communication Kit",
+      "timestamp": "2025-09-02T21:26:04.868750"
+    },
+    {
+      "slot": "device_model",
+      "value": "Samsung S25",
+      "timestamp": "2025-09-02T21:26:15.224393"
+    },
+    {
+      "slot": "confirm_radio_tetra",
+      "value": true,
+      "timestamp": "2025-09-02T21:26:41.526055"
+    }
+  ],
+  "status": "in_progress"
+}
