@@ -120,9 +120,9 @@ jobs:
             fi
             # use git mv if tracked, otherwise plain mv
             if git ls-files --error-unmatch -- "$item" >/dev/null 2>&1; then
-              git mv -k "$item" "$ARCH/" || mv "$item" "$ARCH/"
+              git mv -k -- "$item" "$ARCH/" || mv -- "$item" "$ARCH/"
             else
-              mv "$item" "$ARCH/"
+              mv -- "$item" "$ARCH/"
             fi
             MOVED=$((MOVED+1))
           done

@@ -185,6 +185,73 @@ The GitHub Actions workflow (`proposal-ci.yml`) runs on every push and PR:
 5. Tests all proposal formats
 6. Uploads artifacts
 7. Enforces 95% confidence on main branch
+8. **Auto-archives legacy root content** (main branch only)
+
+## Archiving & Version Control
+
+### Auto-Archive Workflow
+On every push to `main`, GitHub Actions will automatically:
+- Detect the latest version folder in `releases/` (e.g., `dubai-police-swat-v1.0`)
+- Archive all non-essential files/folders into `archive/<VERSION>/`
+- Commit changes back with: `chore(archive): auto-archive legacy root → archive/<VERSION>`
+- Preserve file history using `git mv` where possible
+
+### Keep List (What Stays in Root)
+```bash
+".git" ".github" ".gitattributes" ".gitignore"
+"mcp-server" "ingested_data" "proposals" "releases" "templates"
+"package.json" "package-lock.json" "requirements-proposals.txt"
+"PROPOSAL_SYSTEM.md" "README.md" "README_FIRST.md"
+"html_to_pdf_converter.js" "node_modules" ".claude" "archive"
+```
+
+### Versioned Releases
+- **Client-ready outputs**: `proposals/<project>-final/` (140MB complete packages)
+- **Release snapshots**: `releases/<project>-vX.Y/` (production documents)
+- **SHA256 checksums**: Written to `SHASUMS256.txt` in each release folder
+- **Git tags**: Created as `release-<project>-vX.Y` for full traceability
+
+### Example Release Workflow
+```bash
+# 1. Generate fresh proposals
+npm run proposal:all
+
+# 2. Stage a new release
+mkdir -p releases/dubai-police-swat-v1.1
+cp proposals/dubai-police-swat-final/*.pdf releases/dubai-police-swat-v1.1/
+cp proposals/dubai-police-swat-final/*.docx releases/dubai-police-swat-v1.1/
+shasum -a 256 releases/dubai-police-swat-v1.1/* > "releases/dubai-police-swat-v1.1/SHASUMS256.txt"
+
+# 3. Push to main (CI auto-archives legacy content)
+git add -A
+git commit -m "chore(release): stage dubai-police-swat-v1.1"
+git push origin main
+
+# 4. Tag the release (after CI passes)
+git pull --rebase
+git tag -a "release-dubai-police-swat-v1.1" -m "Release v1.1 (CI auto-archive applied)"
+git push origin "release-dubai-police-swat-v1.1"
+```
+
+### Archive Structure
+```
+archive/
+├── dubai-police-swat-v1.0/          # Version-tagged archive
+│   ├── Dubai_Police_Project/        # Original development files
+│   ├── Datasheets/                  # Reference materials
+│   ├── pictures/                    # Visual assets
+│   ├── logs/                        # System logs
+│   └── legacy-files...              # All archived content
+└── 2025-09-06_14-16-59/            # Timestamp-based archive
+    └── legacy-content...
+```
+
+### Benefits
+- **✅ Clean Repository**: Root stays focused on production essentials
+- **📦 Complete Preservation**: All legacy artifacts archived with history
+- **🏷 Full Traceability**: Tagged releases + version folders + timestamps
+- **🤖 Zero Manual Effort**: CI handles cleanup automatically
+- **📋 Client Focus**: Only presentation-ready content visible
 
 ## Recovery Procedures
 
